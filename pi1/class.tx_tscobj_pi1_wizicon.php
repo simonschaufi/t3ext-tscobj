@@ -91,8 +91,8 @@
 		function includeLocalLang() {
 			
 			// Include file
-			include(t3lib_extMgm::extPath('tscobj').'locallang.php');
-			
+			include(t3lib_extMgm::extPath('tscobj') . 'locallang.xml');
+
 			// Return file content
 			return $LOCAL_LANG;
 		}

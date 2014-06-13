@@ -21,48 +21,48 @@
 	 *
 	 * This copyright notice MUST APPEAR in all copies of the script!
 	 ***************************************************************/
-	
+
 	/**
 	 * Wizard to show TS template.
 	 *
 	 * @author		Jean-David Gadina (macmade@gadlab.net)
 	 * @version		1.0
 	 */
-	
+
 	/**
 	 * [CLASS/FUNCTION INDEX OF SCRIPT]
-	 * 
+	 *
 	 * SECTION:		1 - INIT
 	 *     121:		function main
-	 * 
+	 *
 	 * SECTION:		2 - MAIN
 	 *     224:		function moduleContent
 	 *     275:		function makeLinks
 	 *     301:		function showTemplate($conf,$pObj=false)
-	 * 
+	 *
 	 * SECTION:		3 - UTILITIES
 	 *    374:		function printContent
 	 *    387:		function addStyles
 	 *    412:		function getConfigArray
 	 *    445:		function updateData($object)
-	 * 
+	 *
 	 *				TOTAL FUNCTIONS: 8
 	 */
-	
+
 	// Default initialization of the module
 	unset($MCONF);
 	require('conf.php');
 	require($BACK_PATH . 'init.php');
 	require($BACK_PATH . 'template.php');
-	$LANG->includeLLFile('EXT:tscobj/wiz1/locallang.php');
+	$LANG->includeLLFile('EXT:tscobj/wiz1/locallang.xml');
 	require_once(PATH_t3lib . 'class.t3lib_scbase.php');
-	
+
 	// Required classes for getting the TS template
 	require_once (PATH_t3lib.'class.t3lib_page.php');
 	require_once (PATH_t3lib.'class.t3lib_tstemplate.php');
-	
+
 	class tx_tscobj_wiz1 extends t3lib_SCbase {
-		
+
 		// Available content objets
 		var $cTypes = array(
 			'HTML',

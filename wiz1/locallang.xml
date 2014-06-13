@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type></type>
+		<csh_table></csh_table>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">TypoScript object selector</label>
+			<label index="backlink">Return to edit form</label>
+			<label index="description">You will find below the hierarchy of the TypoScript objects available in the current TS template.</label>
+			<label index="instructions">Simply click on the plus sign to display a section, and on an object to add it.</label>
+			<label index="showall">Expand / Collapse all sections</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="title">Sélecteur d'objet TypoScript</label>
+			<label index="backlink">Retour au formulaire d'?dition</label>
+			<label index="description">Vous trouverez en dessous la hiérarchie des objets TypoScript disponibles dans le gabarit TS.</label>
+			<label index="instructions">Cliquez simplement sur le signe plus pour afficher une section, et sur un objet pour l'ajouter.</label>
+			<label index="showall">Afficher / Masquer toutes les sections</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="default" type="array">
+			<label index="title" type="integer">218260838</label>
+			<label index="backlink" type="integer">187347746</label>
+			<label index="description" type="integer">199287190</label>
+			<label index="instructions" type="integer">146682738</label>
+			<label index="showall" type="integer">30783821</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="title" type="integer">218260838</label>
+			<label index="backlink" type="integer">187347746</label>
+			<label index="description" type="integer">199287190</label>
+			<label index="instructions" type="integer">146682738</label>
+			<label index="showall" type="integer">30783821</label>
+		</languageKey>
+	</orig_hash>
+</T3locallang>

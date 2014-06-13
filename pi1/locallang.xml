@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type></type>
+		<csh_table></csh_table>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="errors.notfound">TypoScript object not found</label>
+			<label index="errors.invalid">Invalid content type</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="errors.notfound">Objet TypoScript introuvable</label>
+			<label index="errors.invalid">Type de contenu invalide</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="default" type="array">
+			<label index="errors.notfound" type="integer">177923447</label>
+			<label index="errors.invalid" type="integer">2051140</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="errors.notfound" type="integer">177923447</label>
+			<label index="errors.invalid" type="integer">2051140</label>
+		</languageKey>
+	</orig_hash>
+</T3locallang>

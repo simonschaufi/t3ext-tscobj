@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type></type>
+		<csh_table></csh_table>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title">TypoScript Object</label>
+			<label index="pi1_plus_wiz_description">Adds a TypoScript object to the page.</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="pi1_title">Objet TypoScript</label>
+			<label index="pi1_plus_wiz_description">Ajoute un objet TypoScript à la page.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title" type="integer">220144703</label>
+			<label index="pi1_plus_wiz_description" type="integer">80181369</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="pi1_title" type="integer">220144703</label>
+			<label index="pi1_plus_wiz_description" type="integer">80181369</label>
+		</languageKey>
+	</orig_hash>
+</T3locallang>

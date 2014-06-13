@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type></type>
+		<csh_table></csh_table>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">TypoScript Object</label>
+			<label index="tt_content.flexform_pi1.object">TypoScript object path</label>
+			<label index="tt_content.flexform_pi1.htmlspecialchars">Pass result through htmlspecialchars()</label>
+			<label index="tt_content.flexform_pi1.wizards.object">Show TS template hierarchy</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="tt_content.list_type_pi1">Objet TypoScript</label>
+			<label index="tt_content.flexform_pi1.object">Chemin de l'objet</label>
+			<label index="tt_content.flexform_pi1.htmlspecialchars">Passer le résult à travers htmlspecialchars()</label>
+			<label index="tt_content.flexform_pi1.wizards.object">Voir la hiérarchie du gabarit TS</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1" type="integer">220144703</label>
+			<label index="tt_content.flexform_pi1.object" type="integer">168347355</label>
+			<label index="tt_content.flexform_pi1.htmlspecialchars" type="integer">264195039</label>
+			<label index="tt_content.flexform_pi1.wizards.object" type="integer">254648567</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="tt_content.list_type_pi1" type="integer">220144703</label>
+			<label index="tt_content.flexform_pi1.object" type="integer">168347355</label>
+			<label index="tt_content.flexform_pi1.htmlspecialchars" type="integer">264195039</label>
+			<label index="tt_content.flexform_pi1.wizards.object" type="integer">254648567</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="default" type="array">
+		</languageKey>
+		<languageKey index="fr" type="array">
+		</languageKey>
+	</orig_text>
+</T3locallang>
