@@ -54,6 +54,9 @@ Content Element From TypoScript
 	:PDF:
 		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.0/_pdf/
 
+	:French Manual:
+		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.0/
+
 
 	**Table of Contents**
 
