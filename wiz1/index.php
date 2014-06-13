@@ -65,12 +65,17 @@ if (!empty($_SERVER['SCRIPT_FILENAME'])) {
 }
 
 require($path . 'init.php');
-require($path . 'template.php');
+if (version_compare(TYPO3_version, '6.0.0', '<')) {
+	require($path . 'template.php');
+}
+
 $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/locallang.xml');
 
-// Required classes for getting the TS template
-require_once(PATH_t3lib . 'class.t3lib_page.php');
-require_once(PATH_t3lib . 'class.t3lib_tstemplate.php');
+if (version_compare(TYPO3_version, '6.0.0', '<')) {
+	// Required classes for getting the TS template
+	require_once(PATH_t3lib . 'class.t3lib_page.php');
+	require_once(PATH_t3lib . 'class.t3lib_tstemplate.php');
+}
 
 class tx_tscobj_wiz1 extends t3lib_SCbase {
 
@@ -134,7 +139,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase {
 		$this->P = t3lib_div::_GP('P');
 
 		// Draw the header.
-		$this->doc = t3lib_div::makeInstance('mediumDoc');
+		$this->doc = t3lib_div::makeInstance('bigDoc');
 		$this->doc->backPath = $GLOBALS['BACK_PATH'];
 		$this->doc->form = '<form action="" method="POST">';
 
@@ -197,7 +202,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase {
 			}
 
 			// Build current path
-			$headerSection = $this->doc->getHeader('pages', $this->pageinfo,$this->pageinfo['_thePath']) . '<br>' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.path') . ': ' . t3lib_div::fixed_lgd_pre($this->pageinfo['_thePath'], 50);
+			$headerSection = $this->doc->getHeader('pages', $this->pageinfo,$this->pageinfo['_thePath']) . '<br>' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.path') . ': ' . t3lib_div::fixed_lgd_cs($this->pageinfo['_thePath'], -50);
 
 			// Start page content
 			$this->content .= $this->doc->startPage($GLOBALS['LANG']->getLL('title'));

@@ -38,8 +38,9 @@
  *				TOTAL FUNCTIONS: 1
  */
 
-// Typo3 FE plugin class
-require_once(PATH_tslib.'class.tslib_pibase.php');
+if (version_compare(TYPO3_version, '6.0.0', '<')) {
+	require_once(PATH_tslib . 'class.tslib_pibase.php');
+}
 
 class tx_tscobj_pi1 extends tslib_pibase {
 
