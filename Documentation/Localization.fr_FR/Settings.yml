@@ -18,4 +18,8 @@ conf.py:
     papersize: a4paper
     pointsize: 10pt
     preamble: \usepackage{typo3}
+  html_theme_options:
+    github_repository: xperseguers/t3ext-tscobj
+    github_branch: master
+    github_sphinx_locale: fr_FR
 ...
