@@ -52,14 +52,25 @@
 // Default initialization of the module
 unset($MCONF);
 require('conf.php');
-require($GLOBALS['BACK_PATH'] . 'init.php');
-require($GLOBALS['BACK_PATH'] . 'template.php');
+
+// Properly compute BACK_PATH when using symbolic links
+if (!empty($_SERVER['SCRIPT_FILENAME'])) {
+	define('PATH_site', substr($_SERVER['SCRIPT_FILENAME'], 0, strpos($_SERVER['SCRIPT_FILENAME'], '/typo3conf/') + 1));
+	$relativeFileName = substr($_SERVER['SCRIPT_FILENAME'], strlen(PATH_site));
+	$relativeFileNameParts = explode('/', $relativeFileName);
+	$path = PATH_site . 'typo3/';
+	$GLOBALS['BACK_PATH'] = str_repeat('../', count($relativeFileNameParts) - 1) . 'typo3/';
+} else {
+	$path = $GLOBALS['BACK_PATH'];
+}
+
+require($path . 'init.php');
+require($path . 'template.php');
 $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/locallang.xml');
-require_once(PATH_t3lib . 'class.t3lib_scbase.php');
 
 // Required classes for getting the TS template
-require_once (PATH_t3lib.'class.t3lib_page.php');
-require_once (PATH_t3lib.'class.t3lib_tstemplate.php');
+require_once(PATH_t3lib . 'class.t3lib_page.php');
+require_once(PATH_t3lib . 'class.t3lib_tstemplate.php');
 
 class tx_tscobj_wiz1 extends t3lib_SCbase {
 
