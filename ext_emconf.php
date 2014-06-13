@@ -10,7 +10,7 @@
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array (
+$EM_CONF[$_EXTKEY] = array(
 	'title' => 'Content Element From TypoScript',
 	'description' => 'A plugin which lets you use any TypoScript object as a normal content element.',
 	'category' => 'plugin',
