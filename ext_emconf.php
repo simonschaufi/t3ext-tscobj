@@ -33,7 +33,17 @@ $EM_CONF[$_EXTKEY] = array (
 	'author_company' => 'macmade.net',
 	'CGLcompliance' => NULL,
 	'CGLcompliance_note' => NULL,
-	'version' => '0.1.1',
+	'version' => '0.2.0-dev',
+	'constraints' => array(
+		'depends' => array(
+			'php' => '5.2.0-5.5.99',
+			'typo3' => '4.5.0-6.2.99',
+		),
+		'conflicts' => array(
+		),
+		'suggests' => array(
+		),
+	),
 );
 
 ?>
