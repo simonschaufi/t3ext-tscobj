@@ -26,7 +26,7 @@
 	 * Plugin 'TypoScript Object' for the 'tscobj' extension.
 	 *
 	 * @author		Jean-David Gadina (macmade@gadlab.net)
-	 * @version		1.0
+	 * @version		1.1
 	 */
 	
 	/**
@@ -194,4 +194,3 @@
 		include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/tscobj/pi1/class.tx_tscobj_pi1.php']);
 	}
 ?>
-

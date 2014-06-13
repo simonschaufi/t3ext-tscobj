@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "tscobj".
  *
- * Auto generated 13-06-2014 10:21
+ * Auto generated 13-06-2014 10:22
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -33,7 +33,7 @@ $EM_CONF[$_EXTKEY] = array (
 	'author_company' => 'macmade.net',
 	'CGLcompliance' => NULL,
 	'CGLcompliance_note' => NULL,
-	'version' => '0.1.0',
+	'version' => '0.1.1',
 );
 
 ?>
