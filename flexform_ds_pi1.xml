@@ -1,0 +1,36 @@
+<T3DataStructure>
+	<meta type="array">
+		<langChildren type="integer">0</langChildren>
+		<langDisable type="integer">1</langDisable>
+	</meta>
+	<ROOT>
+		<type>array</type>
+		<el>
+			<object>
+				<TCEforms>
+					<label>LLL:EXT:tscobj/locallang_db.php:tt_content.flexform_pi1.object</label>
+					<config>
+						<type>input</type>
+						<size>30</size>
+						<wizards>
+							<show_template>
+								<type>script</type>
+								<icon>EXT:tscobj/wiz1/wizard_icon.gif</icon>
+								<title>LLL:EXT:tscobj/locallang_db.php:tt_content.flexform_pi1.wizards.object</title>
+								<script>EXT:tscobj/wiz1/index.php</script>
+							</show_template>
+						</wizards>
+					</config>
+				</TCEforms>
+			</object>
+			<htmlspecialchars>
+				<TCEforms>
+					<label>LLL:EXT:tscobj/locallang_db.php:tt_content.flexform_pi1.htmlspecialchars</label>
+					<config>
+						<type>check</type>
+					</config>
+				</TCEforms>
+			</htmlspecialchars>
+		</el>
+	</ROOT>
+</T3DataStructure>
