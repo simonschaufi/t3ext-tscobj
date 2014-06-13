@@ -95,6 +95,7 @@ class tx_tscobj_pi1 extends tslib_pibase {
 		'TEMPLATE',
 		'MULTIMEDIA',
 		'EDITPANEL',
+		'FLUIDTEMPLATE',
 	);
 
 
