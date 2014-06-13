@@ -94,8 +94,8 @@ class tx_tscobj_pi1 extends tslib_pibase {
 		'PHP_SCRIPT_EXT',
 		'TEMPLATE',
 		'MULTIMEDIA',
-        'EDITPANEL',
-        'FLUIDTEMPLATE',
+		'EDITPANEL',
+		'FLUIDTEMPLATE',
 	);
 
 
