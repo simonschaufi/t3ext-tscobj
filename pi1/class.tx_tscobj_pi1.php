@@ -148,7 +148,7 @@ class tx_tscobj_pi1 extends tslib_pibase {
 			$tsObj = $tmpl;
 
 			// Process TS object hierarchy
-			for($i = 0; $i < count($tmplPath); $i++) {
+			for ($i = 0; $i < count($tmplPath); $i++) {
 
 				// Try to get content type
 				$cType = $tsObj[$tmplPath[$i]];

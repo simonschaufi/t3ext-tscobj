@@ -49,7 +49,7 @@ Content Element From TypoScript
 	a GNU/GPL CMS/Framework available from `www.typo3.org <http://www.typo3.org/>`_.
 
 
-	**Other version of this document**
+	**Other versions of this document**
 
 	:PDF:
 		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.0/_pdf/
