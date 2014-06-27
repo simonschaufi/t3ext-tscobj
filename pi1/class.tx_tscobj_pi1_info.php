@@ -38,10 +38,10 @@ class tx_tscobj_pi1_info extends tslib_pibase {
 	 * Returns plugin information.
 	 *
 	 * @param array $params
-	 * @param tx_cms_layout $pObj
+	 * @param tx_cms_layout|tx_templavoila_preview_type_list $pObj
 	 * @return string
 	 */
-	public function getInfo(array $params, tx_cms_layout $pObj) {
+	public function getInfo(array $params, $pObj) {
 		$this->cObj->data = $params['row'];
 
 		// Init flexform configuration of the plugin
