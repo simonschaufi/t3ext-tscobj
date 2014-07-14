@@ -55,10 +55,10 @@ require('conf.php');
 
 // Properly compute BACK_PATH when using symbolic links
 if (!empty($_SERVER['SCRIPT_FILENAME'])) {
-	define('PATH_site', substr($_SERVER['SCRIPT_FILENAME'], 0, strpos($_SERVER['SCRIPT_FILENAME'], '/typo3conf/') + 1));
-	$relativeFileName = substr($_SERVER['SCRIPT_FILENAME'], strlen(PATH_site));
+	$PATH_site = substr($_SERVER['SCRIPT_FILENAME'], 0, strpos($_SERVER['SCRIPT_FILENAME'], '/typo3conf/') + 1);
+	$relativeFileName = substr($_SERVER['SCRIPT_FILENAME'], strlen($PATH_site));
 	$relativeFileNameParts = explode('/', $relativeFileName);
-	$path = PATH_site . 'typo3/';
+	$path = $PATH_site . 'typo3/';
 	$GLOBALS['BACK_PATH'] = str_repeat('../', count($relativeFileNameParts) - 1) . 'typo3/';
 } else {
 	$path = $GLOBALS['BACK_PATH'];
