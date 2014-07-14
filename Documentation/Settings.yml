@@ -7,7 +7,7 @@ conf.py:
   copyright: 2000-2014
   project: Content Element From TypoScript
   version: 0.2
-  release: 0.2.0
+  release: 0.2.1
   latex_documents:
   - - Index
     - tscobj.tex

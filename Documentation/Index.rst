@@ -52,10 +52,10 @@ Content Element From TypoScript
 	**Other versions of this document**
 
 	:PDF:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.0/_pdf/
+		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.1/_pdf/
 
 	:French Manual:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.0/
+		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.1/
 
 
 	**Table of Contents**

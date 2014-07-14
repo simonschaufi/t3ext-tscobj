@@ -52,10 +52,10 @@
 	**Autres versions de ce document**
 
 	:PDF:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.0/_pdf/
+		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.1/_pdf/
 
 	:English Manual:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.0/
+		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.1/
 
 
 	**Sommaire**
