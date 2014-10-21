@@ -42,6 +42,7 @@ class tx_tscobj_pi1_info extends tslib_pibase {
 	 * @return string
 	 */
 	public function getInfo(array $params, $pObj) {
+		$this->cObj = new stdClass();
 		$this->cObj->data = $params['row'];
 
 		// Init flexform configuration of the plugin
