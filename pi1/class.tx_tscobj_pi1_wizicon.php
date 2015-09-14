@@ -42,7 +42,7 @@ class tx_tscobj_pi1_wizicon
         $wizardItems['plugins_tx_tscobj_pi1'] = array(
 
             // Icon
-            'icon' => t3lib_extMgm::extRelPath('tscobj') . 'pi1/ce_wiz.gif',
+            'icon' => t3lib_extMgm::extRelPath('tscobj') . 'Resources/Public/Images/ce_wiz.gif',
 
             // Title
             'title' => $GLOBALS['LANG']->getLLL('pi1_title', $LL),
