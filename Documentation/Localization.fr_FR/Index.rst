@@ -30,7 +30,7 @@
 		typoscript, élément de contenu
 
 	:Copyright:
-		2000-2014
+		2000-2015
 
 	:Auteur:
 		Jean-David Gadina / macmade.net
@@ -68,4 +68,4 @@
 	UsersManual/Index
 	KnownProblems/Index
 	ToDoList/Index
-	Targets
+	Links
