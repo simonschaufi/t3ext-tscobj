@@ -65,17 +65,8 @@ if (!empty($_SERVER['SCRIPT_FILENAME'])) {
 }
 
 require($path . 'init.php');
-if (version_compare(TYPO3_version, '6.0.0', '<')) {
-	require($path . 'template.php');
-}
 
 $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/locallang.xml');
-
-if (version_compare(TYPO3_version, '6.0.0', '<')) {
-	// Required classes for getting the TS template
-	require_once(PATH_t3lib . 'class.t3lib_page.php');
-	require_once(PATH_t3lib . 'class.t3lib_tstemplate.php');
-}
 
 class tx_tscobj_wiz1 extends t3lib_SCbase {
 
@@ -502,11 +493,6 @@ class tx_tscobj_wiz1 extends t3lib_SCbase {
 			)
 		);
 	}
-}
-
-// XCLASS inclusion
-if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/tscobj/wiz1/index.php'])) {
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/tscobj/wiz1/index.php']);
 }
 
 // Make instance

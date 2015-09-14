@@ -37,11 +37,6 @@
  *
  *				TOTAL FUNCTIONS: 1
  */
-
-if (version_compare(TYPO3_version, '6.0.0', '<')) {
-	require_once(PATH_tslib . 'class.tslib_pibase.php');
-}
-
 class tx_tscobj_pi1 extends tslib_pibase {
 
 
@@ -191,9 +186,4 @@ class tx_tscobj_pi1 extends tslib_pibase {
 			return $code;
 		}
 	}
-}
-
-// XClass inclusion
-if (defined('TYPO3_MODE') && isset($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/tscobj/pi1/class.tx_tscobj_pi1.php'])) {
-	include_once($GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['ext/tscobj/pi1/class.tx_tscobj_pi1.php']);
 }

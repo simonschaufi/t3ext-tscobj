@@ -1,12 +1,5 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
-}
-
-if (version_compare(TYPO3_version, '6.0.0', '<')) {
-	// Load content TCA
-	t3lib_div::loadTCA('tt_content');
-}
+defined('TYPO3_MODE') or die ('Access denied.');
 
 // Plugin options
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key,pages,recursive';
