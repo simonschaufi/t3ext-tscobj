@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2015-09-14T09:13:08Z" product-name="tscobj">
+        <header/>
+        <body>
+            <trans-unit id="title">
+                <target>Sélecteur d'objet TypoScript</target>
+            </trans-unit>
+            <trans-unit id="backlink">
+                <target>Retour au formulaire d'?dition</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <target>Vous trouverez en dessous la hiérarchie des objets TypoScript disponibles dans le gabarit TS.</target>
+            </trans-unit>
+            <trans-unit id="instructions">
+                <target>Cliquez simplement sur le signe plus pour afficher une section, et sur un objet pour l'ajouter.</target>
+            </trans-unit>
+            <trans-unit id="showall">
+                <target>Afficher / Masquer toutes les sections</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

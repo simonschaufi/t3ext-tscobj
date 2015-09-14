@@ -65,7 +65,7 @@ class tx_tscobj_pi1_wizicon
      */
     function includeLocalLang()
     {
-        $llFile = t3lib_extMgm::extPath('tscobj') . 'locallang.xml';
+        $llFile = t3lib_extMgm::extPath('tscobj') . 'Resources/Private/Language/locallang.xlf';
 
         return $GLOBALS['LANG']->includeLLFile($llFile, false);
     }

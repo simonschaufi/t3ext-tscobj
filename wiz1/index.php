@@ -34,7 +34,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME'])) {
 
 require($path . 'init.php');
 
-$GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/locallang.xml');
+$GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/Resources/Private/Language/locallang_wiz1.xlf');
 
 class tx_tscobj_wiz1 extends t3lib_SCbase
 {

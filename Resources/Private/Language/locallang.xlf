@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-14T09:12:59Z" product-name="tscobj">
+		<header/>
+		<body>
+			<trans-unit id="pi1_title">
+				<source>TypoScript Object</source>
+			</trans-unit>
+			<trans-unit id="pi1_plus_wiz_description">
+				<source>Adds a TypoScript object to the page.</source>
+			</trans-unit>
+
+            <trans-unit id="errors.notfound">
+                <source>TypoScript object not found</source>
+            </trans-unit>
+            <trans-unit id="errors.invalid">
+                <source>Invalid content type</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

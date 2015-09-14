@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2015-09-14T09:13:08Z" product-name="tscobj">
+        <header/>
+        <body>
+            <trans-unit id="title">
+                <source>TypoScript object selector</source>
+            </trans-unit>
+            <trans-unit id="backlink">
+                <source>Return to edit form</source>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>You will find below the hierarchy of the TypoScript objects available in the current TS template.</source>
+            </trans-unit>
+            <trans-unit id="instructions">
+                <source>Simply click on the plus sign to display a section, and on an object to add it.</source>
+            </trans-unit>
+            <trans-unit id="showall">
+                <source>Expand / Collapse all sections</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

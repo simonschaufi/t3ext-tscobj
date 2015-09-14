@@ -162,4 +162,45 @@ class tx_tscobj_pi1 extends tslib_pibase
             return $code;
         }
     }
+
+    /**
+     * Loads the locallang file.
+     *
+     * @return void
+     */
+    public function pi_loadLL()
+    {
+        if (!$this->LOCAL_LANG_loaded && $this->scriptRelPath) {
+            $basePath = 'EXT:' . $this->extKey . '/Resources/Private/Language/locallang.xlf';
+
+            // Read the strings in the required charset (since TYPO3 4.2)
+            $this->LOCAL_LANG = GeneralUtility::readLLfile($basePath, $this->LLkey, $GLOBALS['TSFE']->renderCharset);
+            if ($this->altLLkey) {
+                $tempLOCAL_LANG = GeneralUtility::readLLfile($basePath, $this->altLLkey);
+                $this->LOCAL_LANG = array_merge(is_array($this->LOCAL_LANG) ? $this->LOCAL_LANG : array(), $tempLOCAL_LANG);
+                unset($tempLOCAL_LANG);
+            }
+
+            // Overlaying labels from TypoScript (including fictitious language keys for non-system languages!):
+            $confLL = $this->conf['_LOCAL_LANG.'];
+            if (is_array($confLL)) {
+                foreach ($confLL as $k => $lA) {
+                    if (is_array($lA)) {
+                        $k = substr($k, 0, -1);
+                        foreach ($lA as $llK => $llV) {
+                            if (!is_array($llV)) {
+                                // Internal structure is from XLIFF
+                                $this->LOCAL_LANG[$k][$llK][0]['target'] = $llV;
+
+                                // For labels coming from the TypoScript (database) the charset is assumed to be "forceCharset" and if that is not set, assumed to be that of the individual system languages
+                                $this->LOCAL_LANG_charset[$k][$llK] = $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] ? $GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] : $GLOBALS['TSFE']->csConvObj->charSetArray[$k];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        $this->LOCAL_LANG_loaded = 1;
+    }
+
 }
