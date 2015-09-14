@@ -8,7 +8,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY 
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi_flexform';
 
 // Add flexform DataStructures
-t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/flexform_ds_pi1.xml');
+t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_ds_pi1.xml');
 
 // Add plugins
 t3lib_extMgm::addPlugin(array('LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.list_type_pi1', $_EXTKEY . '_pi1'), 'list_type');
