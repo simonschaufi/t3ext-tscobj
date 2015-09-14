@@ -22,14 +22,14 @@
  * @copyright   Causal Sàrl
  * @license     http://www.gnu.org/copyleft/gpl.html
  */
-class tx_tscobj_pi1_info extends tslib_pibase
+class tx_tscobj_pi1_info extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 {
 
     /**
      * Returns plugin information.
      *
      * @param array $params
-     * @param tx_cms_layout|tx_templavoila_preview_type_list $pObj
+     * @param \TYPO3\CMS\Backend\View\PageLayoutView|tx_templavoila_preview_type_list $pObj
      * @return string
      */
     public function getInfo(array $params, $pObj)

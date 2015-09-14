@@ -12,12 +12,14 @@
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Plugin 'TypoScript Object' for the 'tscobj' extension.
  *
  * @author      Jean-David Gadina <macmade@gadlab.net>
  */
-class tx_tscobj_pi1 extends tslib_pibase
+class tx_tscobj_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 {
 
     /***************************************************************
@@ -156,6 +158,8 @@ class tx_tscobj_pi1 extends tslib_pibase
             // Return object
             return $code;
         }
+
+        return '';
     }
 
     /**
@@ -169,9 +173,12 @@ class tx_tscobj_pi1 extends tslib_pibase
             $basePath = 'EXT:' . $this->extKey . '/Resources/Private/Language/locallang.xlf';
 
             // Read the strings in the required charset (since TYPO3 4.2)
-            $this->LOCAL_LANG = GeneralUtility::readLLfile($basePath, $this->LLkey, $GLOBALS['TSFE']->renderCharset);
+            /** @var $languageFactory \TYPO3\CMS\Core\Localization\LocalizationFactory */
+            $languageFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
+            $this->LOCAL_LANG = $languageFactory->getParsedData($basePath, $this->LLkey, $GLOBALS['TSFE']->renderCharset);
+
             if ($this->altLLkey) {
-                $tempLOCAL_LANG = GeneralUtility::readLLfile($basePath, $this->altLLkey);
+                $tempLOCAL_LANG = $languageFactory->getParsedData($basePath, $this->altLLkey, $GLOBALS['TSFE']->renderCharset);
                 $this->LOCAL_LANG = array_merge(is_array($this->LOCAL_LANG) ? $this->LOCAL_LANG : array(), $tempLOCAL_LANG);
                 unset($tempLOCAL_LANG);
             }

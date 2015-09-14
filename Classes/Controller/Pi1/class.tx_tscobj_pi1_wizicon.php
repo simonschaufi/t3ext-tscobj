@@ -12,6 +12,8 @@
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /**
  * Class that adds the wizard icon.
  *
@@ -42,7 +44,7 @@ class tx_tscobj_pi1_wizicon
         $wizardItems['plugins_tx_tscobj_pi1'] = array(
 
             // Icon
-            'icon' => t3lib_extMgm::extRelPath('tscobj') . 'Resources/Public/Images/ce_wiz.gif',
+            'icon' => ExtensionManagementUtility::extRelPath('tscobj') . 'Resources/Public/Images/ce_wiz.gif',
 
             // Title
             'title' => $GLOBALS['LANG']->getLLL('pi1_title', $LL),
@@ -65,7 +67,7 @@ class tx_tscobj_pi1_wizicon
      */
     function includeLocalLang()
     {
-        $llFile = t3lib_extMgm::extPath('tscobj') . 'Resources/Private/Language/locallang.xlf';
+        $llFile = ExtensionManagementUtility::extPath('tscobj') . 'Resources/Private/Language/locallang.xlf';
 
         return $GLOBALS['LANG']->includeLLFile($llFile, false);
     }

@@ -21,6 +21,10 @@
 unset($MCONF);
 require('conf.php');
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Backend\Utility\IconUtility;
+
 // Properly compute BACK_PATH when using symbolic links
 if (!empty($_SERVER['SCRIPT_FILENAME'])) {
     $PATH_site = substr($_SERVER['SCRIPT_FILENAME'], 0, strpos($_SERVER['SCRIPT_FILENAME'], '/typo3conf/') + 1);
@@ -36,8 +40,28 @@ require($path . 'init.php');
 
 $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/Resources/Private/Language/locallang_wiz1.xlf');
 
-class tx_tscobj_wiz1 extends t3lib_SCbase
+class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
 {
+
+    /**
+     * @var string
+     */
+    protected $P;
+
+    /**
+     * @var array
+     */
+    protected $pageinfo;
+
+    /**
+     * @var \TYPO3\CMS\Frontend\Page\PageRepository
+     */
+    protected $sys_page;
+
+    /**
+     * @var \TYPO3\CMS\Core\TypoScript\TemplateService
+     */
+    protected $tmpl;
 
     // Available content objets
     var $cTypes = array(
@@ -92,10 +116,10 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
     function main()
     {
         // Store variables from TCE
-        $this->P = t3lib_div::_GP('P');
+        $this->P = GeneralUtility::_GP('P');
 
         // Draw the header.
-        $this->doc = t3lib_div::makeInstance('bigDoc');
+        $this->doc = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
         $this->doc->backPath = $GLOBALS['BACK_PATH'];
         $this->doc->form = '<form action="" method="POST">';
 
@@ -116,7 +140,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
 					if (document.getElementById) {
 						liClass = document.getElementById(element).className;
 						document.getElementById(element).className = (liClass == "open") ? "closed" : "open";
-						document.getElementById(element + "-img").src = (liClass == "open") ? "' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '', 1) . '" : "' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/minusbullet.gif', '', 1) . '";
+						document.getElementById(element + "-img").src = (liClass == "open") ? "' . IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '', 1) . '" : "' . IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/minusbullet.gif', '', 1) . '";
 					}
 				}
 				// Function for expanding/collapsing all elements
@@ -129,7 +153,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
 							id = listItems[i].id;
 							if (id.substr(id.length - 1,id.length) == ".") {
 								var picture = id + "-img";
-								document.getElementById(picture).src = (expanded) ? "' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '', 1) . '" : "' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/minusbullet.gif', '', 1) . '";
+								document.getElementById(picture).src = (expanded) ? "' . IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '', 1) . '" : "' . IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/minusbullet.gif', '', 1) . '";
 							}
 						}
 						expanded = (expanded == 1) ? 0 : 1;
@@ -143,7 +167,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
         $this->doc->inDocStyles = $this->addStyles();
 
         // Access check
-        $this->pageinfo = t3lib_BEfunc::readPageAccess($this->id, $this->perms_clause);
+        $this->pageinfo = BackendUtility::readPageAccess($this->id, $this->perms_clause);
         $access = is_array($this->pageinfo) ? 1 : 0;
 
         if (($this->id && $access) || ($GLOBALS['BE_USER']->user['admin'] && !$this->id)) {
@@ -158,7 +182,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
             }
 
             // Build current path
-            $headerSection = $this->doc->getHeader('pages', $this->pageinfo, $this->pageinfo['_thePath']) . '<br>' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.path') . ': ' . t3lib_div::fixed_lgd_cs($this->pageinfo['_thePath'], -50);
+            $headerSection = $this->doc->getHeader('pages', $this->pageinfo, $this->pageinfo['_thePath']) . '<br>' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.path') . ': ' . GeneralUtility::fixed_lgd_cs($this->pageinfo['_thePath'], -50);
 
             // Start page content
             $this->content .= $this->doc->startPage($GLOBALS['LANG']->getLL('title'));
@@ -193,17 +217,14 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
      */
     function moduleContent()
     {
-        // DEBUG ONLY - Show template
-        //t3lib_div::debug($conf);
-
         // Object has been selected?
-        if ($id = t3lib_div::_GP('tsobj')) {
+        if ($id = GeneralUtility::_GP('tsobj')) {
 
             // Update flexform data
             $this->updateData($id);
 
             // Return to TCE form
-            header('Location: ' . t3lib_div::locationHeaderUrl($this->P["returnUrl"]));
+            header('Location: ' . GeneralUtility::locationHeaderUrl($this->P["returnUrl"]));
 
         } else {
 
@@ -262,11 +283,11 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
      * This function displays the TS template hierarchy as HTML list
      * elements. Each section can be expanded/collapsed.
      *
-     * @param        $object        A section of the TS template
-     * @param        $object        The path to the current object
-     * @return
+     * @param array $conf A section of the TS template
+     * @param object $pObj The path to the current object
+     * @return string
      */
-    function showTemplate($conf, $pObj = false)
+    function showTemplate(array $conf, $pObj = null)
     {
 
         // Storage
@@ -294,7 +315,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
                     if ($subArray) {
 
                         // Add container
-                        $htmlCode[] = '<li class="closed" id="' . $id . '"><div class="container"><a href="javascript:tx_tscobj_swapClasses(\'' . $id . '\')"><img id="' . $id . '-img" ' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '') . ' alt="" hspace="0" vspace="0" border="0" align="middle"></a>&nbsp;' . $key . $subArray . '</div></li>';
+                        $htmlCode[] = '<li class="closed" id="' . $id . '"><div class="container"><a href="javascript:tx_tscobj_swapClasses(\'' . $id . '\')"><img id="' . $id . '-img" ' . IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '') . ' alt="" hspace="0" vspace="0" border="0" align="middle"></a>&nbsp;' . $key . $subArray . '</div></li>';
                     }
                 }
             } elseif (in_array($value, $this->cTypes)) {
@@ -319,6 +340,8 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
             // Return hierarchy
             return implode(chr(10), $htmlCode);
         }
+
+        return '';
     }
 
     /***************************************************************
@@ -353,10 +376,10 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
     {
 
         // Get stylesheet path
-        $path = t3lib_extMgm::extPath('tscobj') . 'wiz1/stylesheet.css.tmpl';
+        $path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('tscobj') . 'wiz1/stylesheet.css.tmpl';
 
         // Read stylesheet
-        $styles = t3lib_div::getURL($path);
+        $styles = GeneralUtility::getURL($path);
 
         // Replace color markers
         $styles = str_replace('###COLOR1###', $this->doc->bgColor5, $styles);
@@ -379,11 +402,11 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
     {
 
         // Initialize the page selector
-        $this->sys_page = t3lib_div::makeInstance('t3lib_pageSelect');
+        $this->sys_page = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
         $this->sys_page->init(true);
 
         // initialize the TS template
-        $this->tmpl = t3lib_div::makeInstance('t3lib_TStemplate');
+        $this->tmpl = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\TemplateService');
         $this->tmpl->init();
 
         // Avoid an error
@@ -413,7 +436,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
     {
 
         // Get current record
-        $record = t3lib_BEfunc::getRecord($this->P['table'], $this->P['uid']);
+        $record = BackendUtility::getRecord($this->P['table'], $this->P['uid']);
 
         // Get flexform data
         $flex = $record['pi_flexform'];
@@ -422,7 +445,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
         if ($flex) {
 
             // Convert XML data to an array
-            $flexArray = t3lib_div::xml2array($flex);
+            $flexArray = GeneralUtility::xml2array($flex);
 
             // Update data
             $flexArray['data']['sDEF']['lDEF']['object']['vDEF'] = $object;
@@ -445,7 +468,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
         $flexData = '<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?' . '>';
 
         // Add new data
-        $flexData .= chr(10) . t3lib_div::array2xml($flexArray, '', 0, 'T3FlexForms');
+        $flexData .= chr(10) . GeneralUtility::array2xml($flexArray, '', 0, 'T3FlexForms');
 
         // Update database
         $GLOBALS['TYPO3_DB']->exec_UPDATEquery(
@@ -459,7 +482,7 @@ class tx_tscobj_wiz1 extends t3lib_SCbase
 }
 
 // Make instance
-$SOBE = t3lib_div::makeInstance('tx_tscobj_wiz1');
+$SOBE = GeneralUtility::makeInstance('tx_tscobj_wiz1');
 $SOBE->init();
 
 // Start module
