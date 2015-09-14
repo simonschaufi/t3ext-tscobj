@@ -1,189 +1,165 @@
 <?php
-/***************************************************************
- * Copyright notice
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * (c) 2004 Jean-David Gadina (macmade@gadlab.net)
- * All rights reserved
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * This script is part of the TYPO3 project. The TYPO3 project is
- * free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this TYPO3 code.
  *
- * The GNU General Public License can be found at
- * http://www.gnu.org/copyleft/gpl.html.
- *
- * This script is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 /**
  * Plugin 'TypoScript Object' for the 'tscobj' extension.
  *
- * @author		Jean-David Gadina (macmade@gadlab.net)
- * @version		1.1
+ * @author      Jean-David Gadina <macmade@gadlab.net>
  */
+class tx_tscobj_pi1 extends tslib_pibase
+{
 
-/**
- * [CLASS/FUNCTION INDEX OF SCRIPT]
- *
- * SECTION:		1 - MAIN
- *     119:		function main($content,$conf)
- *
- *				TOTAL FUNCTIONS: 1
- */
-class tx_tscobj_pi1 extends tslib_pibase {
+    /***************************************************************
+     * SECTION 0 - VARIABLES
+     *
+     * Class variables for the plugin.
+     ***************************************************************/
 
+    // Same as class name
+    var $prefixId = 'tx_tscobj_pi1';
 
+    // Path to this script relative to the extension dir
+    var $scriptRelPath = 'pi1/class.tx_tscobj_pi1.php';
 
+    // The extension key
+    var $extKey = 'tscobj';
 
-
-	/***************************************************************
-	 * SECTION 0 - VARIABLES
-	 *
-	 * Class variables for the plugin.
-	 ***************************************************************/
-
-	// Same as class name
-	var $prefixId = 'tx_tscobj_pi1';
-
-	// Path to this script relative to the extension dir
-	var $scriptRelPath = 'pi1/class.tx_tscobj_pi1.php';
-
-	// The extension key
-	var $extKey = 'tscobj';
-
-	// Available content objets
-	var $cTypes = array(
-		'HTML',
-		'TEXT',
-		'COBJ_ARRAY',
-		'COA',
-		'COA_INT',
-		'FILE',
-		'IMAGE',
-		'IMG_RESOURCE',
-		'CLEARGIF',
-		'CONTENT',
-		'RECORDS',
-		'HMENU',
-		'CTABLE',
-		'OTABLE',
-		'COLUMNS',
-		'HRULER',
-		'IMGTEXT',
-		'CASE',
-		'LOAD_REGISTER',
-		'RESTORE_REGISTER',
-		'FORM',
-		'SEARCHRESULT',
-		'USER',
-		'USER_INT',
-		'PHP_SCRIPT',
-		'PHP_SCRIPT_INT',
-		'PHP_SCRIPT_EXT',
-		'TEMPLATE',
-		'MULTIMEDIA',
-		'EDITPANEL',
-		'FLUIDTEMPLATE',
-	);
+    // Available content objets
+    var $cTypes = array(
+        'HTML',
+        'TEXT',
+        'COBJ_ARRAY',
+        'COA',
+        'COA_INT',
+        'FILE',
+        'IMAGE',
+        'IMG_RESOURCE',
+        'CLEARGIF',
+        'CONTENT',
+        'RECORDS',
+        'HMENU',
+        'CTABLE',
+        'OTABLE',
+        'COLUMNS',
+        'HRULER',
+        'IMGTEXT',
+        'CASE',
+        'LOAD_REGISTER',
+        'RESTORE_REGISTER',
+        'FORM',
+        'SEARCHRESULT',
+        'USER',
+        'USER_INT',
+        'PHP_SCRIPT',
+        'PHP_SCRIPT_INT',
+        'PHP_SCRIPT_EXT',
+        'TEMPLATE',
+        'MULTIMEDIA',
+        'EDITPANEL',
+        'FLUIDTEMPLATE',
+    );
 
 
+    /***************************************************************
+     * SECTION 1 - MAIN
+     *
+     * Functions for the initialization and the output of the plugin.
+     ***************************************************************/
 
+    /**
+     * Returns the content object of the plugin.
+     *
+     * This function initialises the plugin 'tx_tscobj_pi1', and
+     * launches the needed functions to correctly display the plugin.
+     *
+     * @param        $content            The content object
+     * @param        $conf                The TS setup
+     * @return        The content of the plugin
+     */
+    function main($content, $conf)
+    {
 
+        // Set class confArray TS from the function
+        $this->conf = $conf;
 
-	/***************************************************************
-	 * SECTION 1 - MAIN
-	 *
-	 * Functions for the initialization and the output of the plugin.
-	 ***************************************************************/
+        // Set default plufin variables
+        $this->pi_setPiVarDefaults();
 
-	/**
-	 * Returns the content object of the plugin.
-	 *
-	 * This function initialises the plugin 'tx_tscobj_pi1', and
-	 * launches the needed functions to correctly display the plugin.
-	 *
-	 * @param		$content			The content object
-	 * @param		$conf				The TS setup
-	 * @return		The content of the plugin
-	 */
-	function main($content, $conf) {
+        // Load LOCAL_LANG values
+        $this->pi_loadLL();
 
-		// Set class confArray TS from the function
-		$this->conf = $conf;
+        // Init flexform configuration of the plugin
+        $this->pi_initPIflexForm();
 
-		// Set default plufin variables
-		$this->pi_setPiVarDefaults();
+        // Get TS object path
+        $tsObjPath = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'object');
 
-		// Load LOCAL_LANG values
-		$this->pi_loadLL();
+        // Check for a non empty value
+        if ($tsObjPath) {
 
-		// Init flexform configuration of the plugin
-		$this->pi_initPIflexForm();
+            // Get complete TS template
+            $tmpl = $GLOBALS['TSFE']->tmpl->setup;
 
-		// Get TS object path
-		$tsObjPath = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'object');
+            // Get TS object hierarchy in template
+            $tmplPath = explode('.', $tsObjPath);
 
-		// Check for a non empty value
-		if ($tsObjPath) {
+            // Final TS object storage
+            $tsObj = $tmpl;
 
-			// Get complete TS template
-			$tmpl = $GLOBALS['TSFE']->tmpl->setup;
+            // Process TS object hierarchy
+            for ($i = 0; $i < count($tmplPath); $i++) {
 
-			// Get TS object hierarchy in template
-			$tmplPath = explode('.', $tsObjPath);
+                // Try to get content type
+                $cType = $tsObj[$tmplPath[$i]];
 
-			// Final TS object storage
-			$tsObj = $tmpl;
+                // Try to get TS object configuration array
+                $tsObj = $tsObj[$tmplPath[$i] . '.'];
 
-			// Process TS object hierarchy
-			for ($i = 0; $i < count($tmplPath); $i++) {
+                // Check object
+                if (!$cType && !$tsObj) {
 
-				// Try to get content type
-				$cType = $tsObj[$tmplPath[$i]];
+                    // Object doesn't exist
+                    $error = 1;
+                    break;
+                }
+            }
 
-				// Try to get TS object configuration array
-				$tsObj = $tsObj[$tmplPath[$i] . '.'];
+            // DEBUG ONLY - Show TS object
+            //t3lib_div::debug($cType, 'CONTENT TYPE');
+            //t3lib_div::debug($tsObj, 'TS CONFIGURATION');
 
-				// Check object
-				if (!$cType && !$tsObj) {
+            // Check object and content type
+            if ($error) {
 
-					// Object doesn't exist
-					$error = 1;
-					break;
-				}
-			}
+                // Object not found
+                return '<strong>' . $this->pi_getLL('errors.notfound') . '</strong> (' . $tsObjPath . ')';
 
-			// DEBUG ONLY - Show TS object
-			//t3lib_div::debug($cType, 'CONTENT TYPE');
-			//t3lib_div::debug($tsObj, 'TS CONFIGURATION');
+            } elseif (in_array($cType, $this->cTypes)) {
 
-			// Check object and content type
-			if ($error) {
+                // Use htmlspecialchars to render object?
+                $code = ($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'htmlspecialchars'))
+                    ? nl2br(htmlspecialchars($this->cObj->cObjGetSingle($cType, $tsObj)))
+                    : $this->cObj->cObjGetSingle($cType, $tsObj);
 
-				// Object not found
-				return '<strong>' . $this->pi_getLL('errors.notfound') . '</strong> (' . $tsObjPath . ')';
+            } else {
 
-			} elseif (in_array($cType, $this->cTypes)) {
+                // Invalid content type
+                return '<strong>' . $this->pi_getLL('errors.invalid') . '</strong> (' . $cType . ')';
+            }
 
-				// Use htmlspecialchars to render object?
-				$code = ($this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'htmlspecialchars'))
-					? nl2br(htmlspecialchars($this->cObj->cObjGetSingle($cType, $tsObj)))
-					: $this->cObj->cObjGetSingle($cType, $tsObj);
-
-			} else {
-
-				// Invalid content type
-				return '<strong>' . $this->pi_getLL('errors.invalid') . '</strong> (' . $cType . ')';
-			}
-			// Return object
-			return $code;
-		}
-	}
+            // Return object
+            return $code;
+        }
+    }
 }
