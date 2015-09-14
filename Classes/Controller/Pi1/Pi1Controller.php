@@ -30,7 +30,7 @@ class tx_tscobj_pi1 extends tslib_pibase
     var $prefixId = 'tx_tscobj_pi1';
 
     // Path to this script relative to the extension dir
-    var $scriptRelPath = 'pi1/class.tx_tscobj_pi1.php';
+    var $scriptRelPath = 'Classes/Controller/Pi1/class.tx_tscobj_pi1.php';
 
     // The extension key
     var $extKey = 'tscobj';
@@ -69,7 +69,6 @@ class tx_tscobj_pi1 extends tslib_pibase
         'EDITPANEL',
         'FLUIDTEMPLATE',
     );
-
 
     /***************************************************************
      * SECTION 1 - MAIN
@@ -134,10 +133,6 @@ class tx_tscobj_pi1 extends tslib_pibase
                     break;
                 }
             }
-
-            // DEBUG ONLY - Show TS object
-            //t3lib_div::debug($cType, 'CONTENT TYPE');
-            //t3lib_div::debug($tsObj, 'TS CONFIGURATION');
 
             // Check object and content type
             if ($error) {

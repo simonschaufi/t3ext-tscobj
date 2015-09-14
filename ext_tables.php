@@ -15,5 +15,5 @@ t3lib_extMgm::addPlugin(array('LLL:EXT:tscobj/Resources/Private/Language/localla
 
 // Wizard icons
 if (TYPO3_MODE === 'BE') {
-    $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['tx_' . $_EXTKEY . '_pi1_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'pi1/class.tx_tscobj_pi1_wizicon.php';
+    $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['tx_' . $_EXTKEY . '_pi1_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'Classes/Controller/Pi1/class.tx_tscobj_pi1_wizicon.php';
 }
