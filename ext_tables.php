@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die ('Access denied.');
+defined('TYPO3_MODE') || die ('Access denied.');
 
 // Plugin options
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key,pages,recursive';
@@ -16,4 +16,9 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_
 // Wizard icons
 if (TYPO3_MODE === 'BE') {
     $GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses']['tx_' . $_EXTKEY . '_pi1_wizicon'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Classes/Controller/Pi1/class.tx_tscobj_pi1_wizicon.php';
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModulePath(
+        'wizard_typoscript_browser',
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Modules/Wizards/TyposcriptBrowserWizard/'
+    );
 }

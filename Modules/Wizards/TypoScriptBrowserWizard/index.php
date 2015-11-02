@@ -36,7 +36,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME'])) {
     $path = $GLOBALS['BACK_PATH'];
 }
 
-require($path . 'init.php');
+//require($path . 'init.php');
 
 $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/Resources/Private/Language/locallang_wiz1.xlf');
 
@@ -109,9 +109,9 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      * This function creates the basic page in which the module will
      * take place.
      *
-     * @return        Void
-     * @see            addStyles
-     * @see            moduleContent
+     * @return void
+     * @see addStyles()
+     * @see moduleContent()
      */
     function main()
     {
@@ -125,7 +125,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
 
         // JavaScript
         $this->doc->JScode = '
-			<script type="text/javascript" language="Javascript" charset="iso-8859-1">
+			<script type="text/javascript">
 				<!--
 				script_ended = 0;
 				function jumpToUrl(URL) {
@@ -133,7 +133,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
 				}
 				//-->
 			</script>
-			<script type="text/javascript" language="Javascript" charset="iso-8859-1">
+			<script type="text/javascript">
 				<!--
 				// Function for swapping element classes
 				function tx_tscobj_swapClasses(element) {
@@ -209,11 +209,11 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      *
      * This function creates the module's content.
      *
-     * @return        Void
-     * @see            updateData
-     * @see            makeLinks
-     * @see            getConfigArray
-     * @see            showTemplate
+     * @return void
+     * @see updateData()
+     * @see makeLinks()
+     * @see getConfigArray()
+     * @see showTemplate()
      */
     function moduleContent()
     {
@@ -260,7 +260,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      * This function creates the links to return to TCE forms and
      * to expand/collapse all sections of the TS template.
      *
-     * @return        The two links
+     * @return string The two links
      */
     function makeLinks()
     {
@@ -356,7 +356,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      * This function closes the page, and writes the final
      * rendered content.
      *
-     * @return        Void
+     * @return void
      */
     function printContent()
     {
@@ -370,7 +370,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      * This functions reads the module's stylesheet and replace some
      * colors to add skinning compatibility.
      *
-     * @return        CSS styles, ready to be included in a <style> tag
+     * @return string CSS styles, ready to be included in a <style> tag
      */
     function addStyles()
     {
@@ -396,7 +396,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      * This function creates instances of the class needed to render
      * the TS template, and gets it as a multi-dimensionnal array.
      *
-     * @return        An array containing all the available TS objects
+     * @return array An array containing all the available TS objects
      */
     function getConfigArray()
     {
@@ -429,8 +429,8 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      * object. If the flexform data does not exist, the function
      * creates it.
      *
-     * @param        $object        The TS object path
-     * @return        Void
+     * @param object $object The TS object path
+     * @return void
      */
     function updateData($object)
     {
