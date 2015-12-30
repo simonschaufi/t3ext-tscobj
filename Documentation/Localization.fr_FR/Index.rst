@@ -30,7 +30,7 @@
 		typoscript, élément de contenu
 
 	:Copyright:
-		2000-2015
+		2000-2016
 
 	:Auteur:
 		Jean-David Gadina / macmade.net

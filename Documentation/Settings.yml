@@ -4,7 +4,7 @@
 
 ---
 conf.py:
-  copyright: 2000-2015
+  copyright: 2000-2016
   project: Content Element From TypoScript
   version: 0.3
   release: 0.3.0-dev

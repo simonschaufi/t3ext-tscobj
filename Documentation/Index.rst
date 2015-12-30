@@ -30,7 +30,7 @@ Content Element From TypoScript
 		typoscript, content object
 
 	:Copyright:
-		2000-2015
+		2000-2016
 
 	:Author:
 		Jean-David Gadina / macmade.net
