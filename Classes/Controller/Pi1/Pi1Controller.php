@@ -175,10 +175,10 @@ class tx_tscobj_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
             // Read the strings in the required charset (since TYPO3 4.2)
             /** @var $languageFactory \TYPO3\CMS\Core\Localization\LocalizationFactory */
             $languageFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\LocalizationFactory');
-            $this->LOCAL_LANG = $languageFactory->getParsedData($basePath, $this->LLkey, $GLOBALS['TSFE']->renderCharset);
+            $this->LOCAL_LANG = $languageFactory->getParsedData($basePath, $this->LLkey, $GLOBALS['TSFE']->renderCharset, 0);
 
             if ($this->altLLkey) {
-                $tempLOCAL_LANG = $languageFactory->getParsedData($basePath, $this->altLLkey, $GLOBALS['TSFE']->renderCharset);
+                $tempLOCAL_LANG = $languageFactory->getParsedData($basePath, $this->altLLkey, $GLOBALS['TSFE']->renderCharset, 0);
                 $this->LOCAL_LANG = array_merge(is_array($this->LOCAL_LANG) ? $this->LOCAL_LANG : array(), $tempLOCAL_LANG);
                 unset($tempLOCAL_LANG);
             }
