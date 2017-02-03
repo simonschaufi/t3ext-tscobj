@@ -118,6 +118,10 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
         // Store variables from TCE
         $this->P = GeneralUtility::_GP('P');
 
+        if ($GLOBALS['TSFE'] === null) {
+            $GLOBALS['TSFE'] = new \stdClass();
+        }
+
         // Draw the header.
         $this->doc = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
         $this->doc->backPath = $GLOBALS['BACK_PATH'];

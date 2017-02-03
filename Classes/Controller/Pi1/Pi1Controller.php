@@ -12,6 +12,8 @@
  * The TYPO3 project - inspiring people to share!
  */
 
+namespace Causal\Tscobj\Controller\Pi1;
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -19,7 +21,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author      Jean-David Gadina <macmade@gadlab.net>
  */
-class tx_tscobj_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
+class Pi1Controller extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
 {
 
     /***************************************************************
@@ -32,7 +34,7 @@ class tx_tscobj_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
     var $prefixId = 'tx_tscobj_pi1';
 
     // Path to this script relative to the extension dir
-    var $scriptRelPath = 'Classes/Controller/Pi1/class.tx_tscobj_pi1.php';
+    var $scriptRelPath = 'Classes/Controller/Pi1/Pi1Controller.php';
 
     // The extension key
     var $extKey = 'tscobj';
@@ -84,11 +86,11 @@ class tx_tscobj_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
      * This function initialises the plugin 'tx_tscobj_pi1', and
      * launches the needed functions to correctly display the plugin.
      *
-     * @param        $content            The content object
-     * @param        $conf                The TS setup
-     * @return        The content of the plugin
+     * @param string $content The content object
+     * @param array $conf The TS setup
+     * @return string The content of the plugin
      */
-    function main($content, $conf)
+    public function main($content, array $conf)
     {
 
         // Set class confArray TS from the function
@@ -167,7 +169,7 @@ class tx_tscobj_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
      *
      * @return void
      */
-    public function pi_loadLL()
+    public function pi_loadLL($languageFilePath = '')
     {
         if (!$this->LOCAL_LANG_loaded && $this->scriptRelPath) {
             $basePath = 'EXT:' . $this->extKey . '/Resources/Private/Language/locallang.xlf';

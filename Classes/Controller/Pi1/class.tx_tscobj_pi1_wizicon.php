@@ -33,10 +33,10 @@ class tx_tscobj_pi1_wizicon
     /**
      * Adds wizard item to the backend.
      *
-     * @param        $wizardItems        The wizard items
-     * @return        The wizard item
+     * @param array $wizardItems The wizard items
+     * @return array The wizard item
      */
-    public function proc($wizardItems)
+    public function proc(array $wizardItems)
     {
         // Get locallang values
         $LL = $this->includeLocalLang();
