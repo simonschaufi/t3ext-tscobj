@@ -30,7 +30,7 @@
 		typoscript, élément de contenu
 
 	:Copyright:
-		2000-2016
+		2000-2017
 
 	:Auteur:
 		Jean-David Gadina / macmade.net
@@ -52,10 +52,10 @@
 	**Autres versions de ce document**
 
 	:PDF:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.2/_pdf/
+		https://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.3.0/_pdf/
 
 	:English Manual:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.2/
+		https://docs.typo3.org/typo3cms/extensions/tscobj/0.3.0/
 
 
 	**Sommaire**

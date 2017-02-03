@@ -30,7 +30,7 @@ Content Element From TypoScript
 		typoscript, content object
 
 	:Copyright:
-		2000-2016
+		2000-2017
 
 	:Author:
 		Jean-David Gadina / macmade.net
@@ -52,10 +52,10 @@ Content Element From TypoScript
 	**Other versions of this document**
 
 	:PDF:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/0.2.2/_pdf/
+		https://docs.typo3.org/typo3cms/extensions/tscobj/0.3.0/_pdf/
 
 	:French Manual:
-		http://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.2.2/
+		https://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.3.0/
 
 
 	**Table of Contents**

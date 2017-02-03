@@ -4,10 +4,10 @@
 
 ---
 conf.py:
-  copyright: 2000-2016
+  copyright: 2000-2017
   project: Élément de contenu depuis TypoScript
   version: 0.3
-  release: 0.3.0-dev
+  release: 0.3.0
   latex_documents:
   - - Index
     - tscobj.tex
