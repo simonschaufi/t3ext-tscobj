@@ -12,6 +12,7 @@
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
@@ -30,22 +31,19 @@ class tx_tscobj_pi1_wizicon
      ***************************************************************/
 
     /**
-     * Add wizard item to the backend
+     * Adds wizard item to the backend.
      *
      * @param        $wizardItems        The wizard items
      * @return        The wizard item
      */
-    function proc($wizardItems)
+    public function proc($wizardItems)
     {
         // Get locallang values
         $LL = $this->includeLocalLang();
+        $wizardIcon = 'Resources/Public/Images/ce_wiz.gif';
 
         // Wizard item
-        $wizardItems['plugins_tx_tscobj_pi1'] = array(
-
-            // Icon
-            'icon' => ExtensionManagementUtility::extRelPath('tscobj') . 'Resources/Public/Images/ce_wiz.gif',
-
+        $wizardItem = array(
             // Title
             'title' => $GLOBALS['LANG']->getLLL('pi1_title', $LL),
 
@@ -56,16 +54,30 @@ class tx_tscobj_pi1_wizicon
             'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=tscobj_pi1',
         );
 
-        // Return items
+        if (version_compare(TYPO3_version, '7.5', '>=')) {
+            /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
+            $iconRegistry = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Imaging\\IconRegistry');
+            $iconRegistry->registerIcon('extensions-tscobj-wizard',
+                'TYPO3\\CMS\\Core\\Imaging\\IconProvider\\BitmapIconProvider',
+                array(
+                    'source' => 'EXT:tscobj/' . $wizardIcon,
+                )
+            );
+            $wizardItem['iconIdentifier'] = 'extensions-tscobj-wizard';
+        } else {
+            $wizardItem['icon'] = ExtensionManagementUtility::extRelPath('tscobj') . $wizardIcon;
+        }
+
+        $wizardItems['plugins_tx_tscobj_pi1'] = $wizardItem;
         return $wizardItems;
     }
 
     /**
-     * Include locallang values
+     * Includes locallang values.
      *
      * @return array The content of the locallang file
      */
-    function includeLocalLang()
+    protected function includeLocalLang()
     {
         $llFile = ExtensionManagementUtility::extPath('tscobj') . 'Resources/Private/Language/locallang.xlf';
 
