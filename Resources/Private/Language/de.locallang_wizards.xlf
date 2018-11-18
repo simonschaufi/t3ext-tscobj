@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-12-08T12:41:40Z">
+		<header>
+			<generator>LFEditor</generator>
+			<authorName>Xavier Perseguers</authorName>
+			<authorEmail>xavier@causal.ch</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="backlink" approved="yes">
+				<source><![CDATA[Return to edit form]]></source>
+				<target><![CDATA[Zurück zum Bearbeitungsformular]]></target>
+			</trans-unit>
+			<trans-unit id="description" approved="yes">
+				<source><![CDATA[You will find below the hierarchy of the TypoScript objects available in the current TS template.]]></source>
+				<target><![CDATA[Du siehst eine Baumstruktur von den verfügbaren TypoScript-Objekten im aktuellen TS Template.]]></target>
+			</trans-unit>
+			<trans-unit id="instructions" approved="yes">
+				<source><![CDATA[Simply click on the plus sign to display a section, and on an object to add it.]]></source>
+				<target><![CDATA[Klicke einfach auf das Plus Symbol um einen Bereich anzuzeigen und auf ein Objekt um dieses zu übernehmen]]></target>
+			</trans-unit>
+			<trans-unit id="showall" approved="yes">
+				<source><![CDATA[Expand / Collapse all sections]]></source>
+				<target><![CDATA[Alle Bereiche aus- / einklappen]]></target>
+			</trans-unit>
+			<trans-unit id="title" approved="yes">
+				<source><![CDATA[TypoScript object selector]]></source>
+				<target><![CDATA[TypoScript-Objekt-Selector]]></target>
+			</trans-unit>
+			<trans-unit id="wizard_description" approved="yes">
+				<source><![CDATA[This wizard has been removed because of breaking changes in TYPO3 8. Basically the whole wizard needs to be rewritten to make it work again with newer TYPO3 versions. Therefor we kindly ask you to sponsor this feature. If we get enough donations, we will provide the wizard in an upcoming release. Thank you very much!]]></source>
+				<target><![CDATA[Dieser Wizard wurde entfernt, da es grundlegende Veränderungen in TYPO3 8 gab. Im Grunde muss der Wizard komplett neu geschrieben werden, um ihn wieder kompatibel mit neueren TYPO3 Versionen zu machen. Darum bitten wir dich um eine Spende für dieses Feature. Sobald wir genug Spenden bekommen, werden wir den Wizard in einem der nächsten Releases bereitstellen. Vielen Dank!]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

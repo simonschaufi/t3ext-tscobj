@@ -17,13 +17,15 @@
  *
  * @author      Jean-David Gadina <macmade@gadlab.net>
  */
-// Default initialization of the module
 unset($MCONF);
 require('conf.php');
 
+use TYPO3\CMS\Backend\Module\BaseScriptClass;
+use TYPO3\CMS\Backend\Template\DocumentTemplate;
+use TYPO3\CMS\Core\TypoScript\TemplateService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
-use TYPO3\CMS\Backend\Utility\IconUtility;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
 // Properly compute BACK_PATH when using symbolic links
 if (!empty($_SERVER['SCRIPT_FILENAME'])) {
@@ -36,11 +38,9 @@ if (!empty($_SERVER['SCRIPT_FILENAME'])) {
     $path = $GLOBALS['BACK_PATH'];
 }
 
-//require($path . 'init.php');
-
 $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/Resources/Private/Language/locallang_wiz1.xlf');
 
-class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
+class tx_tscobj_wiz1 extends BaseScriptClass
 {
 
     /**
@@ -64,7 +64,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
     protected $tmpl;
 
     // Available content objets
-    var $cTypes = array(
+    var $cTypes = [
         'HTML',
         'TEXT',
         'COBJ_ARRAY',
@@ -95,7 +95,7 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
         'TEMPLATE',
         'MULTIMEDIA',
         'EDITPANEL',
-    );
+    ];
 
     /***************************************************************
      * SECTION 1 - INIT
@@ -123,9 +123,9 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
         }
 
         // Draw the header.
-        $this->doc = GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
+        $this->doc = GeneralUtility::makeInstance(DocumentTemplate::class);
         $this->doc->backPath = $GLOBALS['BACK_PATH'];
-        $this->doc->form = '<form action="" method="POST">';
+        $this->doc->form = '<form action="" method="post">';
 
         // JavaScript
         $this->doc->JScode = '
@@ -178,11 +178,11 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
 
             // Admin user
             if ($GLOBALS['BE_USER']->user['admin'] && !$this->id) {
-                $this->pageinfo = array(
+                $this->pageinfo = [
                     'title' => '[root-level]',
                     'uid' => 0,
                     'pid' => 0,
-                );
+                ];
             }
 
             // Build current path
@@ -378,7 +378,6 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      */
     function addStyles()
     {
-
         // Get stylesheet path
         $path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('tscobj') . 'wiz1/stylesheet.css.tmpl';
 
@@ -404,13 +403,12 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
      */
     function getConfigArray()
     {
-
         // Initialize the page selector
-        $this->sys_page = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+        $this->sys_page = GeneralUtility::makeInstance(PageRepository::class);
         $this->sys_page->init(true);
 
         // initialize the TS template
-        $this->tmpl = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\TypoScript\\TemplateService');
+        $this->tmpl = GeneralUtility::makeInstance(TemplateService::class);
         $this->tmpl->init();
 
         // Avoid an error
@@ -457,15 +455,15 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
         } else {
 
             // Create new array
-            $flexArray = array(
-                'data' => array(
-                    'sDEF' => array(
-                        'lDEF' => array(
-                            'object' => array('vDEF' => $object),
-                        ),
-                    ),
-                ),
-            );
+            $flexArray = [
+                'data' => [
+                    'sDEF' => [
+                        'lDEF' => [
+                            'object' => ['vDEF' => $object],
+                        ],
+                    ],
+                ],
+            ];
         }
 
         // XML Declaration
@@ -478,9 +476,9 @@ class tx_tscobj_wiz1 extends \TYPO3\CMS\Backend\Module\BaseScriptClass
         $GLOBALS['TYPO3_DB']->exec_UPDATEquery(
             $this->P['table'],
             'uid=' . $this->P['uid'],
-            array(
+            [
                 'pi_flexform' => $flexData,
-            )
+            ]
         );
     }
 }

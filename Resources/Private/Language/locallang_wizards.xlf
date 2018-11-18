@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2018-09-07T11:26:22Z">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-08T12:41:40Z">
 		<header>
 			<generator>LFEditor</generator>
+			<authorName>Xavier Perseguers</authorName>
+			<authorEmail>xavier@causal.ch</authorEmail>
 		</header>
 		<body>
 			<trans-unit id="backlink">
@@ -19,6 +21,9 @@
 			</trans-unit>
 			<trans-unit id="title">
 				<source><![CDATA[TypoScript object selector]]></source>
+			</trans-unit>
+			<trans-unit id="wizard_description">
+				<source><![CDATA[This wizard has been removed because of breaking changes in TYPO3 8. Basically the whole wizard needs to be rewritten to make it work again with newer TYPO3 versions. Therefor we kindly ask you to sponsor this feature. If we get enough donations, we will provide the wizard in an upcoming release. Thank you very much!]]></source>
 			</trans-unit>
 		</body>
 	</file>
