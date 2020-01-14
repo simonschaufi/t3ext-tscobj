@@ -1,54 +1,58 @@
 {
-  "name": "causal/tscobj",
-  "type": "typo3-cms-extension",
-  "description": "A plugin which lets you use any TypoScript object as a normal content element.",
-  "keywords": [
-    "typoscript",
-    "content object"
-  ],
-  "homepage": "https://github.com/xperseguers/t3ext-tscobj",
-  "support": {
-    "issues": "https://github.com/xperseguers/t3ext-tscobj/issues"
-  },
-  "authors": [
-    {
-      "name": "Xavier Perseguers",
-      "email": "xavier@causal.ch",
-      "homepage": "https://www.causal.ch",
-      "role": "Developer"
-    }
-  ],
-  "license": "GPL-2.0+",
-  "require": {
-    "php": ">= 5.3.3, <= 7.3.99",
-    "typo3/cms-core": ">= 6.2.0, <= 8.99.99"
-  },
-  "autoload": {
-    "psr-4": {
-      "Causal\\Tscobj\\": "Classes/"
-    }
-  },
-  "replace": {
-    "tscobj": "self.version",
-    "typo3-ter/tscobj": "self.version"
-  },
-  "config": {
-    "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
-  },
-  "scripts": {
-    "post-autoload-dump": [
-      "mkdir -p .Build/Web/typo3conf/ext/",
-      "[ -L .Build/Web/typo3conf/ext/tscobj ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/tscobj"
-    ]
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.3.x-dev"
-    },
-    "typo3/cms": {
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": ".Build/Web"
-    }
-  }
+	"name": "causal/tscobj",
+	"type": "typo3-cms-extension",
+	"description": "A plugin which lets you use any TypoScript object as a normal content element.",
+	"keywords": [
+		"typo3",
+		"typoscript",
+		"content object"
+	],
+	"homepage": "https://github.com/xperseguers/t3ext-tscobj",
+	"support": {
+		"issues": "https://github.com/xperseguers/t3ext-tscobj/issues"
+	},
+	"authors": [
+		{
+			"name": "Xavier Perseguers",
+			"email": "xavier@causal.ch",
+			"homepage": "https://www.causal.ch",
+			"role": "Developer"
+		},
+		{
+			"name": "Simon Schaufelberger",
+			"email": "simonschaufi+tscobj@gmail.com",
+			"role": "Developer"
+		}
+	],
+	"license": "GPL-2.0+",
+	"require": {
+		"php": ">= 7.0.0, <= 7.2.99",
+		"typo3/cms-core": ">= 8.7.0, <= 8.99.99"
+	},
+	"autoload": {
+		"psr-4": {
+			"Causal\\Tscobj\\": "Classes/"
+		}
+	},
+	"replace": {
+		"tscobj": "self.version",
+		"typo3-ter/tscobj": "self.version"
+	},
+	"config": {
+		"vendor-dir": ".Build/vendor",
+		"bin-dir": ".Build/bin"
+	},
+	"scripts": {
+		"post-autoload-dump": [
+			"mkdir -p .Build/Web/typo3conf/ext/",
+			"[ -L .Build/Web/typo3conf/ext/tscobj ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/tscobj"
+		]
+	},
+	"extra": {
+		"typo3/cms": {
+			"cms-package-dir": "{$vendor-dir}/typo3/cms",
+			"web-dir": ".Build/Web",
+			"extension-key": "tscobj"
+		}
+	}
 }

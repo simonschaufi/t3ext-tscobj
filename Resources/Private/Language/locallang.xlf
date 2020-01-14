@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-09-14T09:12:59Z" product-name="tscobj">
-		<header/>
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-06T23:00:16Z">
+		<header>
+			<generator>LFEditor</generator>
+			<authorName>Xavier Perseguers</authorName>
+			<authorEmail>xavier@causal.ch</authorEmail>
+		</header>
 		<body>
-			<trans-unit id="pi1_title">
-				<source>TypoScript Object</source>
+			<trans-unit id="errors.invalid">
+				<source><![CDATA[Invalid content type]]></source>
+			</trans-unit>
+			<trans-unit id="errors.notfound">
+				<source><![CDATA[TypoScript object not found]]></source>
 			</trans-unit>
 			<trans-unit id="pi1_plus_wiz_description">
-				<source>Adds a TypoScript object to the page.</source>
+				<source><![CDATA[Adds a TypoScript object to the page.]]></source>
 			</trans-unit>
-
-            <trans-unit id="errors.notfound">
-                <source>TypoScript object not found</source>
-            </trans-unit>
-            <trans-unit id="errors.invalid">
-                <source>Invalid content type</source>
-            </trans-unit>
+			<trans-unit id="pi1_title">
+				<source><![CDATA[TypoScript object]]></source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -12,6 +12,17 @@
                     <config>
                         <type>input</type>
                         <size>30</size>
+                        <placeholder>lib.example</placeholder>
+                        <wizards>
+                            <show_template>
+                                <type>script</type>
+                                <icon>EXT:tscobj/Resources/Public/Images/wizard_icon.gif</icon>
+                                <title>LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.flexform_pi1.wizards.object</title>
+                                <module>
+                                    <name>wizard_typoscript_browser</name>
+                                </module>
+                            </show_template>
+                        </wizards>
                     </config>
                 </TCEforms>
             </object>

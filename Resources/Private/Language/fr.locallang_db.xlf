@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2015-09-14T09:13:02Z" product-name="tscobj">
-        <header/>
-        <body>
-            <trans-unit id="tt_content.list_type_pi1">
-                <target>Objet TypoScript</target>
-            </trans-unit>
-            <trans-unit id="tt_content.flexform_pi1.object">
-                <target>Chemin de l'objet</target>
-            </trans-unit>
-            <trans-unit id="tt_content.flexform_pi1.htmlspecialchars">
-                <target>Passer le résult à travers htmlspecialchars()</target>
-            </trans-unit>
-            <trans-unit id="tt_content.flexform_pi1.wizards.object">
-                <target>Voir la hiérarchie du gabarit TS</target>
-            </trans-unit>
-        </body>
-    </file>
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2019-12-06T23:00:51Z">
+		<header>
+			<generator>LFEditor</generator>
+			<authorName>Xavier Perseguers</authorName>
+			<authorEmail>xavier@causal.ch</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="tt_content.flexform_pi1.htmlspecialchars" approved="yes">
+				<source><![CDATA[Pass result through htmlspecialchars()]]></source>
+				<target><![CDATA[Passer le résult à travers htmlspecialchars()]]></target>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.object" approved="yes">
+				<source><![CDATA[TypoScript object path]]></source>
+				<target><![CDATA[Chemin de l'objet]]></target>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.wizards.object" approved="yes">
+				<source><![CDATA[Show TS template hierarchy]]></source>
+				<target><![CDATA[Voir la hiérarchie du gabarit TS]]></target>
+			</trans-unit>
+			<trans-unit id="tt_content.list_type_pi1" approved="yes">
+				<source><![CDATA[TypoScript object]]></source>
+				<target><![CDATA[Objet TypoScript]]></target>
+			</trans-unit>
+		</body>
+	</file>
 </xliff>

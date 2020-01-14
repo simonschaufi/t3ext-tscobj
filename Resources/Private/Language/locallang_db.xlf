@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2015-09-14T09:13:02Z" product-name="tscobj">
-        <header/>
-        <body>
-            <trans-unit id="tt_content.list_type_pi1">
-                <source>TypoScript Object</source>
-            </trans-unit>
-            <trans-unit id="tt_content.flexform_pi1.object">
-                <source>TypoScript object path</source>
-            </trans-unit>
-            <trans-unit id="tt_content.flexform_pi1.htmlspecialchars">
-                <source>Pass result through htmlspecialchars()</source>
-            </trans-unit>
-            <trans-unit id="tt_content.flexform_pi1.wizards.object">
-                <source>Show TS template hierarchy</source>
-            </trans-unit>
-        </body>
-    </file>
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-06T23:00:51Z">
+		<header>
+			<generator>LFEditor</generator>
+			<authorName>Xavier Perseguers</authorName>
+			<authorEmail>xavier@causal.ch</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="tt_content.flexform_pi1.htmlspecialchars">
+				<source><![CDATA[Pass result through htmlspecialchars()]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.object">
+				<source><![CDATA[TypoScript object path]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.wizards.object">
+				<source><![CDATA[Show TS template hierarchy]]></source>
+			</trans-unit>
+			<trans-unit id="tt_content.list_type_pi1">
+				<source><![CDATA[TypoScript object]]></source>
+			</trans-unit>
+		</body>
+	</file>
 </xliff>
