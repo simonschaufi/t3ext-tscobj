@@ -12,3 +12,14 @@ A plugin which lets you use any TypoScript object as a normal content element.
 ```bash
 composer require causal/tscobj
 ```
+
+## Usage
+
+Define your TypoScript: 
+
+```
+lib.test = TEXT
+lib.test.value = Show this text as content
+```
+
+Add the Typoscript Object Plugin on your page and paste the typoscript config path `lib.test` in the plugin configuration.
