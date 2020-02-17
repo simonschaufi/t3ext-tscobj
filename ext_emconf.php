@@ -14,7 +14,7 @@ $EM_CONF['tscobj'] = [
     'version' => '1.0.1',
     'constraints' => [
         'depends' => [
-            'php' => '7.0.0-7.99.99',
+            'php' => '7.1.0-7.99.99',
             'typo3' => '8.7.0-8.99.99',
         ],
         'conflicts' => [],
