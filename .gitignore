@@ -1,4 +1,8 @@
 .idea/
 .Build/
 Documentation-GENERATED-temp/
+.env
+.env.dist
+.php_cs.cache
 composer.lock
+release.sh
