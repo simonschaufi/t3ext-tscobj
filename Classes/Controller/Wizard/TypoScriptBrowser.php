@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 namespace Causal\Tscobj\Controller\Wizard;
 
+use Causal\Tscobj\Http\HtmlResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Controller\Wizard\AbstractWizardController;
 use TYPO3\CMS\Backend\Template\Components\ButtonBar;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Imaging\Icon;
@@ -26,9 +28,16 @@ class TypoScriptBrowser extends AbstractWizardController
      */
     private $P;
 
+    /**
+     * ModuleTemplate object
+     *
+     * @var ModuleTemplate
+     */
+    protected $moduleTemplate;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->moduleTemplate = GeneralUtility::makeInstance(ModuleTemplate::class);
         $this->getLanguageService()->includeLLFile('EXT:tscobj/Resources/Private/Language/locallang_wizards.xlf');
 
         $this->init();
@@ -43,17 +52,30 @@ class TypoScriptBrowser extends AbstractWizardController
     }
 
     /**
-     * Injects the request object for the current request and gathers all data.
+     * Injects the request object for the current request or subrequest
+     * As this controller goes only through the main() method, it is rather simple for now
      *
-     * @param ServerRequestInterface $request the current request
-     * @param ResponseInterface $response the prepared response
-     * @return ResponseInterface the response with the content
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
      */
-    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
+    public function mainAction(ServerRequestInterface $request): ResponseInterface
+    {
+        return $this->processRequestV9($request);
+    }
+
+    /**
+     * Process request function
+     * Makes a header-location redirect to an edit form IF POSSIBLE from the passed data - otherwise the window will
+     * just close.
+     *
+     * @param  ServerRequestInterface $request
+     * @return ResponseInterface
+     */
+    public function processRequestV9(ServerRequestInterface $request): ResponseInterface
     {
         $this->main();
-        $response->getBody()->write($this->content);
-        return $response;
+
+        return new HtmlResponse($this->content);
     }
 
     /**
@@ -62,7 +84,6 @@ class TypoScriptBrowser extends AbstractWizardController
     protected function main(): void
     {
         $this->getButtons();
-        $this->moduleTemplate->getPageRenderer()->loadRequireJsModule('TYPO3/CMS/Backend/ContextMenu');
         $this->moduleTemplate->setTitle($this->getLanguageService()->getLL('title'));
 
         if ($this->P['table'] && $this->P['field'] && $this->P['uid']) {
@@ -88,7 +109,7 @@ class TypoScriptBrowser extends AbstractWizardController
             // Close
             $closeButton = $buttonBar->makeLinkButton()
                 ->setHref($this->P['returnUrl'])
-                ->setTitle($this->getLanguageService()->sL('LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:rm.closeDoc'))
+                ->setTitle($this->getLanguageService()->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:rm.closeDoc'))
                 ->setIcon($this->moduleTemplate->getIconFactory()->getIcon('actions-close', Icon::SIZE_SMALL));
             $buttonBar->addButton($closeButton, ButtonBar::BUTTON_POSITION_LEFT, 10);
         }
@@ -121,8 +142,9 @@ class TypoScriptBrowser extends AbstractWizardController
     protected function typoScriptWizard(): string
     {
         $description = $this->getLanguageService()->getLL('wizard_description');
+
         return <<<HTML
-<p>$description</p>
+<p>${description}</p>
 <a href="https://www.paypal.me/simonschaufi" target="_blank" class="btn btn-primary">
     <strong><i class="fa fa-paypal" aria-hidden="true"></i> Donate now</strong>
 </a>

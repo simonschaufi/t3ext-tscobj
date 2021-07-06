@@ -1,10 +1,4 @@
-﻿.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
-
 .. include:: Includes.txt
-
 
 .. _start:
 
@@ -12,60 +6,52 @@
 Content Element From TypoScript
 ===============================
 
-.. only:: html
+:Version:
+   |release|
 
-	:Classification:
-		tscobj
+:Language:
+   en
 
-	:Version:
-		|release|
+:Description:
+   A plugin which lets you use any TypoScript object as a normal content element.
 
-	:Language:
-		en
+:Keywords:
+   typoscript, content object
 
-	:Description:
-		A plugin which lets you use any TypoScript object as a normal content element.
+:Copyright:
+   Jean-David Gadina
 
-	:Keywords:
-		typoscript, content object
+:Authors:
+   Jean-David Gadina / macmade.net
 
-	:Copyright:
-		2000-2017
+:Email:
+   macmade [at] gadlab [dot] net
 
-	:Author:
-		Jean-David Gadina / macmade.net
+:License:
+   This extension is published under the
+   `GNU General Public License v2.0 <https://www.gnu.org/licenses/old-licenses/gpl-2.0.html>`__
 
-	:Email:
-		macmade@gadlab.net
+TYPO3
+=====
 
-	:License:
-		This document is published under the Open Publication License
-		available from http://www.opencontent.org/openpub/
+The content of this document is related to TYPO3 CMS,
+a GNU/GPL CMS/Framework available from `typo3.org <https://typo3.org/>`_ .
 
-	:Rendered:
-		|today|
+For Contributors
+================
 
-	The content of this document is related to TYPO3,
-	a GNU/GPL CMS/Framework available from `www.typo3.org <https://typo3.org/>`__.
+You are welcome to help improve this guide if you are missing something.
+Just click on "Edit me on GitHub" on the top right to submit your change request.
 
-
-	**Other versions of this document**
-
-	:PDF:
-		https://docs.typo3.org/typo3cms/extensions/tscobj/0.3.0/_pdf/
-
-	:French Manual:
-		https://docs.typo3.org/typo3cms/extensions/tscobj/fr-fr/0.3.0/
-
-
-	**Table of Contents**
+Table of Contents
+=================
 
 .. toctree::
-	:maxdepth: 5
-	:titlesonly:
+   :maxdepth: 3
+   :titlesonly:
+   :glob:
 
-	Introduction/Index
-	UsersManual/Index
-	KnownProblems/Index
-	ToDoList/Index
-	Links
+   Introduction/Index
+   UsersManual/Index
+   Links
+   Sitemap

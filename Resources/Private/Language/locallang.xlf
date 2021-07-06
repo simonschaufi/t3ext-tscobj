@@ -19,6 +19,9 @@
 			<trans-unit id="pi1_title">
 				<source><![CDATA[TypoScript object]]></source>
 			</trans-unit>
+			<trans-unit id="tt_content.list_type_pi1">
+				<source><![CDATA[TypoScript object]]></source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

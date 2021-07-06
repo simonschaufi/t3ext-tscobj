@@ -1,1 +1,4 @@
-.idea
+.idea/
+.Build/
+Documentation-GENERATED-temp/
+composer.lock

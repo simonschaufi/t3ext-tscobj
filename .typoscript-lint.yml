@@ -1,0 +1,13 @@
+paths:
+  - Configuration/TSconfig
+
+sniffs:
+  - class: Indentation
+    parameters:
+      useSpaces: false
+      indentPerLevel: 1
+  - class: DeadCode
+  - class: RepeatingRValue
+    disabled: true
+  - class: NestingConsistency
+    disabled: true

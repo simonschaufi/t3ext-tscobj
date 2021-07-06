@@ -32,7 +32,7 @@ class TypoScriptObjectController extends AbstractPlugin
     {
         $this->conf = $conf;
         $this->pi_setPiVarDefaults();
-        $this->pi_loadLL('EXT:' . $this->extKey . '/Resources/Private/Language/locallang.xlf');
+        $this->pi_loadLL('EXT:tscobj/Resources/Private/Language/locallang.xlf');
         $this->pi_initPIflexForm();
 
         $typoScriptObjectPath = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'object');
@@ -56,7 +56,7 @@ class TypoScriptObjectController extends AbstractPlugin
 
         $renderedObject = $this->cObj->cObjGetSingle($contentType, $typoScriptObject);
 
-        return ((bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'htmlspecialchars'))
+        return (bool)$this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'htmlspecialchars')
             ? nl2br(htmlspecialchars($renderedObject))
             : $renderedObject;
     }
@@ -64,9 +64,9 @@ class TypoScriptObjectController extends AbstractPlugin
     /**
      * @param array $templatePath
      * @return array
-     * @throws \Causal\Tscobj\Exception\ObjectNotFoundException
+     * @throws ObjectNotFoundException
      */
-    protected function validateTemplatePath(array $templatePath)
+    protected function validateTemplatePath(array $templatePath): array
     {
         $contentType = '';
         $typoScriptObject = $this->getTypoScriptFrontendController()->tmpl->setup;
@@ -88,9 +88,6 @@ class TypoScriptObjectController extends AbstractPlugin
         return [$contentType, $typoScriptObject];
     }
 
-    /**
-     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
-     */
     protected function getTypoScriptFrontendController(): TypoScriptFrontendController
     {
         return $GLOBALS['TSFE'];

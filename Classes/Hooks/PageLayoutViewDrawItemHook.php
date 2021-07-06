@@ -13,13 +13,13 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
     /**
      * Preprocesses the preview rendering of a content element.
      *
-     * @param \TYPO3\CMS\Backend\View\PageLayoutView $parentObject Calling parent object
+     * @param PageLayoutView $parentObject Calling parent object
      * @param bool $drawItem Whether to draw the item using the default functionalities
      * @param string $headerContent Header content
      * @param string $itemContent Item content
      * @param array $row Record row of tt_content
      */
-    public function preProcess(PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row)
+    public function preProcess(PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row): void
     {
         if ($row['CType'] === 'list' && $row['list_type'] === 'tscobj_pi1') {
             $flexform = GeneralUtility::xml2array($row['pi_flexform']);
@@ -39,12 +39,18 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
      * @param string $value Value pointer, eg. "vDEF
      * @return string|null The content.
      */
-    private function pi_getFlexFormValue($T3FlexForm_array, $fieldName, $sheet = 'sDEF', $lang = 'lDEF', $value = 'vDEF')
-    {
+    private function pi_getFlexFormValue(
+        array $T3FlexForm_array,
+        string $fieldName,
+        string $sheet = 'sDEF',
+        string $lang = 'lDEF',
+        string $value = 'vDEF'
+    ) {
         $sheetArray = is_array($T3FlexForm_array) ? $T3FlexForm_array['data'][$sheet][$lang] : '';
         if (is_array($sheetArray)) {
             return $this->pi_getFlexFormValueFromSheetArray($sheetArray, explode('/', $fieldName), $value);
         }
+
         return null;
     }
 
@@ -55,7 +61,6 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
      * @param array $fieldNameArr Array where each value points to a key in the FlexForms content - the input array will have the value returned pointed to by these keys. All integer keys will not take their integer counterparts, but rather traverse the current position in the array an return element number X (whether this is right behavior is not settled yet...)
      * @param string $value Value for outermost key, typ. "vDEF" depending on language.
      * @return mixed The value, typ. string.
-     * @access private
      * @see pi_getFlexFormValue()
      */
     private function pi_getFlexFormValueFromSheetArray(array $sheetArray, array $fieldNameArr, string $value)
@@ -68,6 +73,7 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
                     foreach ($tempArr as $values) {
                         if ($c == $v) {
                             $tempArr = $values;
+
                             break;
                         }
                         $c++;
@@ -77,6 +83,7 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
                 $tempArr = $tempArr[$v];
             }
         }
+
         return $tempArr[$value];
     }
 }

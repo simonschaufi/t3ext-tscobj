@@ -23,6 +23,10 @@
 				<source><![CDATA[TypoScript object]]></source>
 				<target><![CDATA[Objet TypoScript]]></target>
 			</trans-unit>
+			<trans-unit id="tt_content.list_type_pi1" approved="yes">
+				<source><![CDATA[TypoScript object]]></source>
+				<target><![CDATA[Objet TypoScript]]></target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

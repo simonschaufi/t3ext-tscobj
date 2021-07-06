@@ -5,5 +5,4 @@ namespace Causal\Tscobj\Exception;
 
 class ObjectNotFoundException extends \Exception
 {
-
 }
