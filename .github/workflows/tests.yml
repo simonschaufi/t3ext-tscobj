@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [7.2, 7.3, 7.4]
-        typo3: [^9.5, ^10.4, ^11.2]
+        typo3: [9.5, 10.4, 11.2]
 
     name: P${{ matrix.php }} - T${{ matrix.typo3 }}
 
