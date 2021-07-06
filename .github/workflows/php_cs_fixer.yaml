@@ -4,9 +4,9 @@ on: [push, pull_request, pull_request_target]
 
 jobs:
   php-cs-fixer:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     # dont run jobs on forks, because we are not allowed to commit
-    if: github.event.pull_request.draft == false && github.repository == 'simonschaufi/gkh_rss_import'
+    if: github.event.pull_request.draft == false && github.repository == 'xperseguers/t3ext-tscobj'
 
     steps:
       - uses: actions/checkout@v2
