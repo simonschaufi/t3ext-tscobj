@@ -53,6 +53,8 @@
 		"post-autoload-dump": [
 			"mkdir -p .Build/public/typo3conf/ext/",
 			"[ -L .Build/public/typo3conf/ext/tscobj ] || ln -snvf ../../../../. .Build/public/typo3conf/ext/tscobj"
+		],
+		"prepare-release": [
 		]
 	},
 	"extra": {
