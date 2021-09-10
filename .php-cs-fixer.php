@@ -18,7 +18,6 @@ $finder = \PhpCsFixer\Finder::create()
             'Resources',
         ]
     )
-    ->exclude('Configuration')
     ->notName('ext_localconf.php')
     ->notName('ext_tables.php')
     ->notName('ext_emconf.php')
