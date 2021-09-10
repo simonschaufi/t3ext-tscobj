@@ -1,11 +1,30 @@
 <?php
+
 declare(strict_types=1);
 
 if (PHP_SAPI !== 'cli') {
     die('This script supports command line usage only. Please check your command.');
 }
 
-$copyRightHeader = <<<EOF
+$finder = \PhpCsFixer\Finder::create()
+    ->name('*.php')
+    ->in(__DIR__)
+    ->exclude(
+        [
+            '.Build',
+            '.github',
+            'Documentation',
+            'Configuration',
+            'Resources',
+        ]
+    )
+    ->exclude('Configuration')
+    ->notName('ext_localconf.php')
+    ->notName('ext_tables.php')
+    ->notName('ext_emconf.php')
+;
+
+$headerComment = <<<EOF
 This file is part of the TYPO3 CMS project.
 
 (c) Simon Schaufelberger
@@ -19,18 +38,6 @@ LICENSE.txt file that was distributed with this source code.
 
 The TYPO3 project - inspiring people to share!
 EOF;
-
-$finder = (new \PhpCsFixer\Finder())
-    ->exclude(
-        [
-            '.Build',
-            '.github',
-            'Documentation',
-            'Resources',
-        ]
-    )
-    ->in(__DIR__)
-    ->depth('> 1');
 
 return (new \PhpCsFixer\Config())
     ->setRiskyAllowed(true)
@@ -84,7 +91,7 @@ return (new \PhpCsFixer\Config())
         'single_trait_insert_per_statement' => true,
         'whitespace_after_comma_in_array' => true,
         'header_comment' => [
-            'header' => $copyRightHeader,
+            'header' => $headerComment,
             'comment_type' => 'comment',
             'location' => 'after_declare_strict',
             'separate' => 'both'
