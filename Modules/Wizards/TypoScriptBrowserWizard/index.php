@@ -1,13 +1,16 @@
 <?php
+
 /*
  * This file is part of the TYPO3 CMS project.
+ *
+ * (c) Simon Schaufelberger
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
  * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this TYPO3 code.
+ * LICENSE.txt file that was distributed with this source code.
  *
  * The TYPO3 project - inspiring people to share!
  */
@@ -22,9 +25,9 @@ require('conf.php');
 
 use TYPO3\CMS\Backend\Module\BaseScriptClass;
 use TYPO3\CMS\Backend\Template\DocumentTemplate;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\TypoScript\TemplateService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Frontend\Page\PageRepository;
 
 // Properly compute BACK_PATH when using symbolic links
@@ -64,7 +67,7 @@ class tx_tscobj_wiz1 extends BaseScriptClass
     protected $tmpl;
 
     // Available content objets
-    var $cTypes = [
+    public $cTypes = [
         'HTML',
         'TEXT',
         'COBJ_ARRAY',
@@ -109,11 +112,10 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      * This function creates the basic page in which the module will
      * take place.
      *
-     * @return void
      * @see addStyles()
      * @see moduleContent()
      */
-    function main()
+    public function main()
     {
         // Store variables from TCE
         $this->P = GeneralUtility::_GP('P');
@@ -213,13 +215,12 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      *
      * This function creates the module's content.
      *
-     * @return void
      * @see updateData()
      * @see makeLinks()
      * @see getConfigArray()
      * @see showTemplate()
      */
-    function moduleContent()
+    public function moduleContent()
     {
         // Object has been selected?
         if ($id = GeneralUtility::_GP('tsobj')) {
@@ -228,8 +229,7 @@ class tx_tscobj_wiz1 extends BaseScriptClass
             $this->updateData($id);
 
             // Return to TCE form
-            header('Location: ' . GeneralUtility::locationHeaderUrl($this->P["returnUrl"]));
-
+            header('Location: ' . GeneralUtility::locationHeaderUrl($this->P['returnUrl']));
         } else {
 
             // Start section
@@ -266,13 +266,13 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      *
      * @return string The two links
      */
-    function makeLinks()
+    public function makeLinks()
     {
         // Storage
-        $htmlCode = array();
+        $htmlCode = [];
 
         // Back link
-        $htmlCode[] = '<a href="' . $this->P["returnUrl"] . '">' . $GLOBALS['LANG']->getLL('backlink') . '</a><br />';
+        $htmlCode[] = '<a href="' . $this->P['returnUrl'] . '">' . $GLOBALS['LANG']->getLL('backlink') . '</a><br />';
 
         // Show all link
         $htmlCode[] = '<a href="javascript:tx_tscobj_expAll();">' . $GLOBALS['LANG']->getLL('showall') . '</a>';
@@ -291,11 +291,11 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      * @param object $pObj The path to the current object
      * @return string
      */
-    function showTemplate(array $conf, $pObj = null)
+    public function showTemplate(array $conf, $pObj = null)
     {
 
         // Storage
-        $htmlCode = array();
+        $htmlCode = [];
 
         // Start list
         $htmlCode[] = '<ul>';
@@ -359,10 +359,8 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      *
      * This function closes the page, and writes the final
      * rendered content.
-     *
-     * @return void
      */
-    function printContent()
+    public function printContent()
     {
         $this->content .= $this->doc->endPage();
         echo $this->content;
@@ -376,7 +374,7 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      *
      * @return string CSS styles, ready to be included in a <style> tag
      */
-    function addStyles()
+    public function addStyles()
     {
         // Get stylesheet path
         $path = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('tscobj') . 'wiz1/stylesheet.css.tmpl';
@@ -401,7 +399,7 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      *
      * @return array An array containing all the available TS objects
      */
-    function getConfigArray()
+    public function getConfigArray()
     {
         // Initialize the page selector
         $this->sys_page = GeneralUtility::makeInstance(PageRepository::class);
@@ -432,9 +430,8 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      * creates it.
      *
      * @param object $object The TS object path
-     * @return void
      */
-    function updateData($object)
+    public function updateData($object)
     {
 
         // Get current record
@@ -451,7 +448,6 @@ class tx_tscobj_wiz1 extends BaseScriptClass
 
             // Update data
             $flexArray['data']['sDEF']['lDEF']['object']['vDEF'] = $object;
-
         } else {
 
             // Create new array

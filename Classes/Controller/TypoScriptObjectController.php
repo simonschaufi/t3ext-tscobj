@@ -1,17 +1,27 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * (c) Simon Schaufelberger
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 namespace Causal\Tscobj\Controller;
 
 use Causal\Tscobj\Exception\ObjectNotFoundException;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\CMS\Frontend\Plugin\AbstractPlugin;
 
-/**
- * Plugin 'TypoScript Object' for the 'tscobj' extension.
- *
- * @author      Jean-David Gadina <macmade@gadlab.net>
- */
 class TypoScriptObjectController extends AbstractPlugin
 {
     public $prefixId = 'tx_tscobj_pi1';
@@ -69,7 +79,7 @@ class TypoScriptObjectController extends AbstractPlugin
     protected function validateTemplatePath(array $templatePath): array
     {
         $contentType = '';
-        $typoScriptObject = $this->getTypoScriptFrontendController()->tmpl->setup;
+        $typoScriptObject = $this->frontendController->tmpl->setup;
 
         $templatePaths = count($templatePath);
         for ($i = 0; $i < $templatePaths; $i++) {
@@ -86,10 +96,5 @@ class TypoScriptObjectController extends AbstractPlugin
         }
 
         return [$contentType, $typoScriptObject];
-    }
-
-    protected function getTypoScriptFrontendController(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 }
