@@ -1,8 +1,9 @@
-.idea/
-.Build/
-Documentation-GENERATED-temp/
-.env
-.env.dist
-.php_cs.cache
-composer.lock
-release.sh
+/.idea/
+/.Build/
+/Documentation-GENERATED-temp/
+/var/
+/.env
+/.env.dist
+/.php-cs-fixer.cache
+/composer.lock
+/release.sh

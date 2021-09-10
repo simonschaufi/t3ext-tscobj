@@ -12,8 +12,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        typo3: [ '^9.5', '^10.4' ]
-        php: [ '7.2', '7.3', '7.4' ]
+        typo3: [ '^11.4' ]
+        php: [ '7.4', '8.0' ]
         dependency-version: [ stable ]
         experimental: [ false ]
         include:
@@ -22,10 +22,6 @@ jobs:
             php: '7.4'
             dependency-version: stable
             experimental: true
-          - typo3: '~11.2.0'
-            php: '7.4'
-            dependency-version: stable
-            experimental: false
 
     continue-on-error: ${{ matrix.experimental }}
 
@@ -57,15 +53,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          export COMPOSER_ROOT_VERSION=6.5.0
           composer require --no-update \
-            typo3/cms-core:"${{ matrix.typo3 }}" \
             typo3/cms-backend:"${{ matrix.typo3 }}" \
+            typo3/cms-core:"${{ matrix.typo3 }}" \
             typo3/cms-extbase="${{ matrix.typo3 }}" \
-            typo3/cms-extensionmanager="${{ matrix.typo3 }}" \
-            typo3/cms-fluid="${{ matrix.typo3 }}" \
             typo3/cms-frontend="${{ matrix.typo3 }}" \
-            typo3/cms-install="${{ matrix.typo3 }}" \
             typo3/cms-recordlist="${{ matrix.typo3 }}"
           composer update --prefer-${{ matrix.dependency-version }} --prefer-dist --no-interaction
           git checkout composer.json

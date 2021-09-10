@@ -1,9 +1,24 @@
 <?php
+
 declare(strict_types=1);
+
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * (c) Simon Schaufelberger
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 namespace Causal\Tscobj\Controller\Wizard;
 
-use Causal\Tscobj\Http\HtmlResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Controller\Wizard\AbstractWizardController;
@@ -11,22 +26,18 @@ use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class TypoScriptBrowser extends AbstractWizardController
 {
-    /**
-     * @var string
-     */
-    private $content;
+    private string $content;
 
     /**
      * Wizard parameters, coming from FormEngine linking to the wizard.
-     *
-     * @var array
      */
-    private $P;
+    private array $P;
 
     /**
      * ModuleTemplate object
@@ -43,9 +54,6 @@ class TypoScriptBrowser extends AbstractWizardController
         $this->init();
     }
 
-    /**
-     * Initialization of the class
-     */
     protected function init(): void
     {
         $this->P = GeneralUtility::_GP('P');
@@ -59,19 +67,6 @@ class TypoScriptBrowser extends AbstractWizardController
      * @return ResponseInterface
      */
     public function mainAction(ServerRequestInterface $request): ResponseInterface
-    {
-        return $this->processRequestV9($request);
-    }
-
-    /**
-     * Process request function
-     * Makes a header-location redirect to an edit form IF POSSIBLE from the passed data - otherwise the window will
-     * just close.
-     *
-     * @param  ServerRequestInterface $request
-     * @return ResponseInterface
-     */
-    public function processRequestV9(ServerRequestInterface $request): ResponseInterface
     {
         $this->main();
 
@@ -136,9 +131,6 @@ class TypoScriptBrowser extends AbstractWizardController
         }
     }
 
-    /**
-     * @return string
-     */
     protected function typoScriptWizard(): string
     {
         $description = $this->getLanguageService()->getLL('wizard_description');
@@ -155,11 +147,6 @@ class TypoScriptBrowser extends AbstractWizardController
 HTML;
     }
 
-    /**
-     * Gets the current backend user.
-     *
-     * @return \TYPO3\CMS\Core\Authentication\BackendUserAuthentication
-     */
     protected function getBackendUser(): BackendUserAuthentication
     {
         return $GLOBALS['BE_USER'];
