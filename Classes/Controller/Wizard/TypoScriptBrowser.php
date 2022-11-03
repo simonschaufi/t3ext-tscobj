@@ -32,7 +32,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class TypoScriptBrowser extends AbstractWizardController
 {
-    private string $content;
+    private string $content = '';
 
     /**
      * Wizard parameters, coming from FormEngine linking to the wizard.
