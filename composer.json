@@ -1,5 +1,5 @@
 {
-	"name": "causal/tscobj",
+	"name": "simonschaufi/tscobj",
 	"type": "typo3-cms-extension",
 	"description": "A plugin which lets you use any TypoScript object as a normal content element.",
 	"keywords": [
