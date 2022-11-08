@@ -10,13 +10,10 @@ Links
 	https://typo3.org/extensions/repository/view/tscobj
 
 :Bug Tracker:
-	https://github.com/xperseguers/t3ext-tscobj/issues
+	https://github.com/simonschaufi/t3ext-tscobj/issues
 
 :Git Repository:
-	https://github.com/xperseguers/t3ext-tscobj.git
-
-:Contact:
-	`@xperseguers <https://twitter.com/xperseguers>`__
+	https://github.com/simonschaufi/t3ext-tscobj.git
 
 
 .. _links-how-to-contribute:

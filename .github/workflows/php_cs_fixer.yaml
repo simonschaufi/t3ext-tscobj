@@ -6,7 +6,7 @@ jobs:
   php-cs-fixer:
     runs-on: ubuntu-20.04
     # dont run jobs on forks, because we are not allowed to commit
-    if: github.event.pull_request.draft == false && github.repository == 'xperseguers/t3ext-tscobj'
+    if: github.event.pull_request.draft == false && github.repository == 'simonschaufi/t3ext-tscobj'
 
     steps:
       - uses: actions/checkout@v2
