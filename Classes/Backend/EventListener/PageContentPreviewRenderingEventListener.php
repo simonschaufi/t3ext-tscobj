@@ -17,31 +17,26 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Causal\Tscobj\Hooks;
+namespace Causal\Tscobj\Backend\EventListener;
 
-use TYPO3\CMS\Backend\View\PageLayoutView;
-use TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
+use TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
-class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
+final class PageContentPreviewRenderingEventListener
 {
-    /**
-     * Preprocesses the preview rendering of a content element.
-     *
-     * @param PageLayoutView $parentObject Calling parent object
-     * @param bool $drawItem Whether to draw the item using the default functionalities
-     * @param string $headerContent Header content
-     * @param string $itemContent Item content
-     * @param array $row Record row of tt_content
-     */
-    public function preProcess(PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row): void
+    public function __invoke(PageContentPreviewRenderingEvent $event): void
     {
-        if ($row['CType'] === 'list' && $row['list_type'] === 'tscobj_pi1') {
-            $flexform = GeneralUtility::xml2array($row['pi_flexform']);
+        if ($event->getTable() !== 'tt_content') {
+            return;
+        }
+        if ($event->getRecord()['CType'] === 'list' && $event->getRecord()['list_type'] === 'tscobj_pi1') {
+            $row = $event->getRecord();
+            $flexForm = GeneralUtility::xml2array($row['pi_flexform']);
 
-            $itemContent = 'TS: ' . $this->pi_getFlexFormValue($flexform, 'object');
-            $drawItem = false;
+            $itemContent = 'TS: ' . $this->pi_getFlexFormValue($flexForm, 'object');
+
+            $event->setPreviewContent($itemContent);
         }
     }
 
@@ -62,7 +57,7 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
         string $lang = 'lDEF',
         string $value = 'vDEF'
     ): ?string {
-        $sheetArray = is_array($T3FlexForm_array) ? $T3FlexForm_array['data'][$sheet][$lang] : '';
+        $sheetArray = $T3FlexForm_array['data'][$sheet][$lang];
         if (is_array($sheetArray)) {
             return $this->pi_getFlexFormValueFromSheetArray($sheetArray, explode('/', $fieldName), $value);
         }
@@ -79,7 +74,7 @@ class PageLayoutViewDrawItemHook implements PageLayoutViewDrawItemHookInterface
      * @return mixed The value, typ. string.
      * @see pi_getFlexFormValue()
      */
-    private function pi_getFlexFormValueFromSheetArray(array $sheetArray, array $fieldNameArr, string $value)
+    private function pi_getFlexFormValueFromSheetArray(array $sheetArray, array $fieldNameArr, string $value): mixed
     {
         $tempArr = $sheetArray;
         foreach ($fieldNameArr as $k => $v) {

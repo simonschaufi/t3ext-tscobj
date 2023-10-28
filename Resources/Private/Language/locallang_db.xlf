@@ -13,9 +13,6 @@
 			<trans-unit id="tt_content.flexform_pi1.object">
 				<source><![CDATA[TypoScript object path]]></source>
 			</trans-unit>
-			<trans-unit id="tt_content.flexform_pi1.wizards.object">
-				<source><![CDATA[Show TS template hierarchy]]></source>
-			</trans-unit>
 			<trans-unit id="tt_content.list_type_pi1">
 				<source><![CDATA[TypoScript object]]></source>
 			</trans-unit>

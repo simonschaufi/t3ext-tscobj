@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Causal\Tscobj\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  Causal\Tscobj\Backend\EventListener\PageContentPreviewRenderingEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'tscobj/preview-rendering-tscobj_pi1'

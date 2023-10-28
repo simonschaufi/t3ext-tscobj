@@ -20,13 +20,14 @@ declare(strict_types=1);
 namespace Causal\Tscobj\Controller;
 
 use Causal\Tscobj\Exception\ObjectNotFoundException;
-use TYPO3\CMS\Frontend\Plugin\AbstractPlugin;
+use Causal\Tscobj\Plugin\AbstractPlugin;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectFactory;
+use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
 
 class TypoScriptObjectController extends AbstractPlugin
 {
-    public $prefixId = 'tx_tscobj_pi1';
-
-    public $extKey = 'tscobj';
+    public string $extKey = 'tscobj';
 
     /**
      * Returns the content object of the plugin.
@@ -37,11 +38,11 @@ class TypoScriptObjectController extends AbstractPlugin
      * @param string $content The content object
      * @param array $conf The TS setup
      * @return string The content of the plugin
+     * @throws ContentRenderingException
      */
-    public function main(string $content, array $conf)
+    public function main(string $content, array $conf): string
     {
         $this->conf = $conf;
-        $this->pi_setPiVarDefaults();
         $this->pi_loadLL('EXT:tscobj/Resources/Private/Language/locallang.xlf');
         $this->pi_initPIflexForm();
 
@@ -59,7 +60,9 @@ class TypoScriptObjectController extends AbstractPlugin
             return '<strong>' . $this->pi_getLL('errors.notfound') . '</strong> (' . $typoScriptObjectPath . ')';
         }
 
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['FE']['ContentObjects'][$contentType])) {
+        // FIXME: There is no other way to check if a content element is registered
+        $contentObjectFactory = GeneralUtility::makeInstance(ContentObjectFactory::class);
+        if ($contentObjectFactory->getContentObject($contentType, $this->cObj->getRequest(), $this->cObj) === null) {
             // Invalid content type
             return '<strong>' . $this->pi_getLL('errors.invalid') . '</strong> (' . $contentType . ')';
         }

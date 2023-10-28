@@ -7,27 +7,18 @@
         <type>array</type>
         <el>
             <object>
-                <TCEforms>
-                    <label>LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.flexform_pi1.object</label>
-                    <config>
-                        <type>input</type>
-                        <size>30</size>
-                        <placeholder>lib.example</placeholder>
-                        <fieldControl>
-                            <importControl>
-                                <renderType>importDataControl</renderType>
-                            </importControl>
-                        </fieldControl>
-                    </config>
-                </TCEforms>
+                <label>LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.flexform_pi1.object</label>
+                <config>
+                    <type>input</type>
+                    <size>30</size>
+                    <placeholder>lib.example</placeholder>
+                </config>
             </object>
             <htmlspecialchars>
-                <TCEforms>
-                    <label>LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.flexform_pi1.htmlspecialchars</label>
-                    <config>
-                        <type>check</type>
-                    </config>
-                </TCEforms>
+                <label>LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.flexform_pi1.htmlspecialchars</label>
+                <config>
+                    <type>check</type>
+                </config>
             </htmlspecialchars>
         </el>
     </ROOT>

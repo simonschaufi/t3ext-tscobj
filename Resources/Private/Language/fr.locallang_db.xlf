@@ -15,10 +15,6 @@
 				<source><![CDATA[TypoScript object path]]></source>
 				<target><![CDATA[Chemin de l'objet]]></target>
 			</trans-unit>
-			<trans-unit id="tt_content.flexform_pi1.wizards.object" approved="yes">
-				<source><![CDATA[Show TS template hierarchy]]></source>
-				<target><![CDATA[Voir la hiérarchie du gabarit TS]]></target>
-			</trans-unit>
 			<trans-unit id="tt_content.list_type_pi1" approved="yes">
 				<source><![CDATA[TypoScript object]]></source>
 				<target><![CDATA[Objet TypoScript]]></target>
