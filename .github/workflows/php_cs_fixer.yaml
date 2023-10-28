@@ -13,7 +13,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           # https://github.com/stefanzweifel/git-auto-commit-action#commits-of-this-action-do-not-trigger-new-workflow-runs
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT || github.token }}
 
       - name: Get Composer Cache Directory
         id: composer-cache
