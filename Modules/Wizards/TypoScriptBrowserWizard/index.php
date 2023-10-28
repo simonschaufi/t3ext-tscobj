@@ -45,7 +45,6 @@ $GLOBALS['LANG']->includeLLFile('EXT:tscobj/wiz1/Resources/Private/Language/loca
 
 class tx_tscobj_wiz1 extends BaseScriptClass
 {
-
     /**
      * @var string
      */
@@ -177,7 +176,6 @@ class tx_tscobj_wiz1 extends BaseScriptClass
         $access = is_array($this->pageinfo) ? 1 : 0;
 
         if (($this->id && $access) || ($GLOBALS['BE_USER']->user['admin'] && !$this->id)) {
-
             // Admin user
             if ($GLOBALS['BE_USER']->user['admin'] && !$this->id) {
                 $this->pageinfo = [
@@ -224,14 +222,12 @@ class tx_tscobj_wiz1 extends BaseScriptClass
     {
         // Object has been selected?
         if ($id = GeneralUtility::_GP('tsobj')) {
-
             // Update flexform data
             $this->updateData($id);
 
             // Return to TCE form
             header('Location: ' . GeneralUtility::locationHeaderUrl($this->P['returnUrl']));
         } else {
-
             // Start section
             $this->content .= $this->doc->sectionBegin();
 
@@ -293,7 +289,6 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      */
     public function showTemplate(array $conf, $pObj = null)
     {
-
         // Storage
         $htmlCode = [];
 
@@ -302,28 +297,23 @@ class tx_tscobj_wiz1 extends BaseScriptClass
 
         // Process each object of the configuration array
         foreach ($conf as $key => $value) {
-
             // TS object ID
             $id = $pObj . $key;
 
             // Check if object is a container
             if (is_array($value)) {
-
                 // Check if object has a content type
                 if (substr($key, 0, strlen($key) - 1) != $lastKey) {
-
                     // No content type - Process sub configuration
                     $subArray = $this->showTemplate($value, $id);
 
                     // Check if objects are available
                     if ($subArray) {
-
                         // Add container
                         $htmlCode[] = '<li class="closed" id="' . $id . '"><div class="container"><a href="javascript:tx_tscobj_swapClasses(\'' . $id . '\')"><img id="' . $id . '-img" ' . IconUtility::skinImg($GLOBALS['BACK_PATH'], 'gfx/ol/plusbullet.gif', '') . ' alt="" hspace="0" vspace="0" border="0" align="middle"></a>&nbsp;' . $key . $subArray . '</div></li>';
                     }
                 }
             } elseif (in_array($value, $this->cTypes)) {
-
                 // Memorize key
                 $lastKey = $key;
 
@@ -340,7 +330,6 @@ class tx_tscobj_wiz1 extends BaseScriptClass
 
         // Check if objects have been detected
         if (count($htmlCode) > 2) {
-
             // Return hierarchy
             return implode(chr(10), $htmlCode);
         }
@@ -433,7 +422,6 @@ class tx_tscobj_wiz1 extends BaseScriptClass
      */
     public function updateData($object)
     {
-
         // Get current record
         $record = BackendUtility::getRecord($this->P['table'], $this->P['uid']);
 
@@ -442,14 +430,12 @@ class tx_tscobj_wiz1 extends BaseScriptClass
 
         // Check if data exsists
         if ($flex) {
-
             // Convert XML data to an array
             $flexArray = GeneralUtility::xml2array($flex);
 
             // Update data
             $flexArray['data']['sDEF']['lDEF']['object']['vDEF'] = $object;
         } else {
-
             // Create new array
             $flexArray = [
                 'data' => [
