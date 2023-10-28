@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT || github.token }}
 
       - name: Cache dependencies
         uses: actions/cache@v1
