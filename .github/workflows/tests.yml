@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.PAT || github.token }}
 
       - name: Cache dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache/files
           key: dependencies-typo3-${{ matrix.typo3 }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
