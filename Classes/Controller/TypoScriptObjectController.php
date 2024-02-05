@@ -35,9 +35,6 @@ class TypoScriptObjectController extends AbstractPlugin
      * This function initialises the plugin 'tx_tscobj_pi1', and
      * launches the needed functions to correctly display the plugin.
      *
-     * @param string $content The content object
-     * @param array $conf The TS setup
-     * @return string The content of the plugin
      * @throws ContentRenderingException
      */
     public function main(string $content, array $conf): string
@@ -75,8 +72,6 @@ class TypoScriptObjectController extends AbstractPlugin
     }
 
     /**
-     * @param array $templatePath
-     * @return array
      * @throws ObjectNotFoundException
      */
     protected function validateTemplatePath(array $templatePath): array
@@ -86,8 +81,8 @@ class TypoScriptObjectController extends AbstractPlugin
 
         $templatePaths = count($templatePath);
         for ($i = 0; $i < $templatePaths; $i++) {
-            // Get content type
-            $contentType = $typoScriptObject[$templatePath[$i]];
+            // Get the content type
+            $contentType = $typoScriptObject[$templatePath[$i]] ?? null;
 
             // Get TS object configuration
             $typoScriptObject = $typoScriptObject[$templatePath[$i] . '.'];
