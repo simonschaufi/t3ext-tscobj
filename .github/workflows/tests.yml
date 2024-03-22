@@ -12,16 +12,16 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        typo3: [ '^11.4' ]
-        php: [ '7.4', '8.0' ]
+        typo3: [ '^11.5' ]
+        php: [ '7.4', '8.0', '8.1' ]
         dependency-version: [ stable ]
         experimental: [ false ]
-        include:
+        #include:
           # Info: ALL variables MUST be listed here, there is no fallback to the default values above!
-          - typo3: 'dev-master'
-            php: '7.4'
-            dependency-version: stable
-            experimental: true
+        #  - typo3: '^11.5'
+        #    php: '8.1'
+        #    dependency-version: stable
+        #    experimental: true
 
     continue-on-error: ${{ matrix.experimental }}
 
