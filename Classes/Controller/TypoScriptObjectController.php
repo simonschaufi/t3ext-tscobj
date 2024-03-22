@@ -83,8 +83,8 @@ class TypoScriptObjectController extends AbstractPlugin
 
         $templatePaths = count($templatePath);
         for ($i = 0; $i < $templatePaths; $i++) {
-            // Get content type
-            $contentType = $typoScriptObject[$templatePath[$i]];
+            // Get the content type
+            $contentType = $typoScriptObject[$templatePath[$i]] ?? null;
 
             // Get TS object configuration
             $typoScriptObject = $typoScriptObject[$templatePath[$i] . '.'];
