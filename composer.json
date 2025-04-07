@@ -37,7 +37,7 @@
 		"ssch/typo3-rector": "^2.13",
 		"typo3/cms-fluid-styled-content": "^12.4",
 		"typo3/cms-tstemplate": "^12.4",
-		"typo3/tailor": "^1.6"
+		"typo3/tailor": "^1.7"
 	},
 	"autoload": {
 		"psr-4": {
