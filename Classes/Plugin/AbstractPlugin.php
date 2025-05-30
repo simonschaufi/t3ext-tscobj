@@ -86,6 +86,20 @@ class AbstractPlugin
     public string $altLLkey = '';
 
     /**
+     * Pointer to the language to use.
+     *
+     * @var string
+     */
+    public ?string $LLtestPrefix;
+
+    /**
+     * Pointer to the language to use.
+     *
+     * @var string
+     */
+    public ?string $LLtestPrefixAlt;
+
+    /**
      * Should normally be set in the main function with the TypoScript content passed to the method.
      *
      * $conf[LOCAL_LANG][_key_] is reserved for Local Language overrides.
@@ -155,14 +169,16 @@ class AbstractPlugin
     public function pi_getLL(string $key, string $alternativeLabel = ''): ?string
     {
         $word = null;
-        if (!empty($this->LOCAL_LANG[$this->LLkey][$key][0]['target'])
+        if (
+            !empty($this->LOCAL_LANG[$this->LLkey][$key][0]['target'])
             || isset($this->LOCAL_LANG_UNSET[$this->LLkey][$key])
         ) {
             $word = $this->LOCAL_LANG[$this->LLkey][$key][0]['target'];
         } elseif ($this->altLLkey) {
             $alternativeLanguageKeys = GeneralUtility::trimExplode(',', $this->altLLkey, true);
             foreach ($alternativeLanguageKeys as $languageKey) {
-                if (!empty($this->LOCAL_LANG[$languageKey][$key][0]['target'])
+                if (
+                    !empty($this->LOCAL_LANG[$languageKey][$key][0]['target'])
                     || isset($this->LOCAL_LANG_UNSET[$languageKey][$key])
                 ) {
                     // Alternative language translation for key exists
@@ -172,7 +188,8 @@ class AbstractPlugin
             }
         }
         if ($word === null) {
-            if (!empty($this->LOCAL_LANG['default'][$key][0]['target'])
+            if (
+                !empty($this->LOCAL_LANG['default'][$key][0]['target'])
                 || isset($this->LOCAL_LANG_UNSET['default'][$key])
             ) {
                 // Get default translation (without charset conversion, english)
