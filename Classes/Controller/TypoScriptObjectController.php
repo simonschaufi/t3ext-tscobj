@@ -77,7 +77,9 @@ class TypoScriptObjectController extends AbstractPlugin
     protected function validateTemplatePath(array $templatePath): array
     {
         $contentType = '';
-        $typoScriptObject = $this->frontendController->tmpl->setup;
+        $typoScriptObject = $GLOBALS['TYPO3_REQUEST']
+            ->getAttribute('frontend.typoscript')
+            ->getSetupArray();
 
         $templatePaths = count($templatePath);
         for ($i = 0; $i < $templatePaths; $i++) {

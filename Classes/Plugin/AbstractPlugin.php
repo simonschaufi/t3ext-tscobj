@@ -110,13 +110,6 @@ class AbstractPlugin
     public $conf = [];
 
     /**
-     * Property for accessing TypoScriptFrontendController centrally
-     *
-     * @var TypoScriptFrontendController
-     */
-    protected TypoScriptFrontendController $frontendController;
-
-    /**
      * @var MarkerBasedTemplateService
      */
     protected MarkerBasedTemplateService $templateService;
@@ -128,11 +121,10 @@ class AbstractPlugin
      *
      * @param null $_ unused,
      */
-    public function __construct($_ = null, TypoScriptFrontendController $frontendController = null)
+    public function __construct($_ = null)
     {
-        $this->frontendController = $frontendController ?: $GLOBALS['TSFE'];
         $this->templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
-        $this->LLkey = $this->frontendController->getLanguage()->getTypo3Language();
+        $this->LLkey = $GLOBALS['TYPO3_REQUEST']->getAttribute('site')->getDefaultLanguage()->getTypo3Language();
 
         $locales = GeneralUtility::makeInstance(Locales::class);
         if ($locales->isValidLanguageKey($this->LLkey)) {
