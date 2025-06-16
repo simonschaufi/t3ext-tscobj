@@ -17,6 +17,5 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Causal\Tscobj\Exception;
-
-class ObjectNotFoundException extends \Exception {}
+define('LF', chr(10));
+define('CR', chr(13));
