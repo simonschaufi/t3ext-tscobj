@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-06T23:00:51Z">
-		<header>
-			<generator>LFEditor</generator>
-			<authorName>Xavier Perseguers</authorName>
-			<authorEmail>xavier@causal.ch</authorEmail>
-		</header>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="messages">
+		<header/>
 		<body>
 			<trans-unit id="tt_content.flexform_pi1.htmlspecialchars">
 				<source><![CDATA[Pass result through htmlspecialchars()]]></source>

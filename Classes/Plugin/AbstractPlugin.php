@@ -26,7 +26,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class AbstractPlugin
 {
@@ -34,22 +33,16 @@ class AbstractPlugin
 
     /**
      * Path to the plugin class script relative to extension directory, eg. 'pi1/class.tx_newfaq_pi1.php'
-     *
-     * @var string
      */
     public string $scriptRelPath;
 
     /**
      * Extension key.
-     *
-     * @var string
      */
     public string $extKey;
 
     /**
      * Local Language content
-     *
-     * @var array
      */
     public array $LOCAL_LANG = [];
 
@@ -58,30 +51,22 @@ class AbstractPlugin
      * This is necessary, as we cannot distinguish between a nonexisting
      * translation and a label that has been cleared by TS.
      * In both cases ['key'][0]['target'] is "".
-     *
-     * @var array
      */
     protected array $LOCAL_LANG_UNSET = [];
 
     /**
      * Flag that tells if the locallang file has been fetch (or tried to
      * be fetched) already.
-     *
-     * @var bool
      */
     public bool $LOCAL_LANG_loaded = false;
 
     /**
      * Pointer to the language to use.
-     *
-     * @var string
      */
     public string $LLkey = 'default';
 
     /**
      * Pointer to alternative fall-back language to use.
-     *
-     * @var string
      */
     public string $altLLkey = '';
 
@@ -93,30 +78,16 @@ class AbstractPlugin
      *
      * @var array
      */
-    public $conf = [];
+    public array $conf = [];
 
-    /**
-     * Property for accessing TypoScriptFrontendController centrally
-     *
-     * @var TypoScriptFrontendController
-     */
-    protected TypoScriptFrontendController $frontendController;
-
-    /**
-     * @var MarkerBasedTemplateService
-     */
     protected MarkerBasedTemplateService $templateService;
 
     /**
-     * Class Constructor (true constructor)
      * Initializes $this->piVars if $this->prefixId is set to any value
      * Will also set $this->LLkey based on the config.language setting.
-     *
-     * @param null $_ unused,
      */
-    public function __construct($_ = null, TypoScriptFrontendController $frontendController = null)
+    public function __construct()
     {
-        $this->frontendController = $frontendController ?: $GLOBALS['TSFE'];
         $this->templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
         $this->LLkey = $this->frontendController->getLanguage()->getTypo3Language();
 
@@ -179,10 +150,10 @@ class AbstractPlugin
                 $word = $this->LOCAL_LANG['default'][$key][0]['target'];
             } else {
                 // Return alternative string or empty
-                $word = !empty($this->LLtestPrefixAlt) ? $this->LLtestPrefixAlt . $alternativeLabel : $alternativeLabel;
+                $word = $alternativeLabel;
             }
         }
-        return !empty($this->LLtestPrefix) ? $this->LLtestPrefix . $word : $word;
+        return $word;
     }
 
     /**
@@ -202,8 +173,7 @@ class AbstractPlugin
         }
 
         if ($languageFilePath === '' && $this->scriptRelPath) {
-            $languageFilePath =
-                'EXT:' . $this->extKey . '/' . PathUtility::dirname($this->scriptRelPath) . '/locallang.xlf';
+            $languageFilePath = 'EXT:' . $this->extKey . '/' . PathUtility::dirname($this->scriptRelPath) . '/locallang.xlf';
         }
         if ($languageFilePath !== '') {
             $languageFactory = GeneralUtility::makeInstance(LocalizationFactory::class);

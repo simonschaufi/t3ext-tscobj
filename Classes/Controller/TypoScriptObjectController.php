@@ -21,6 +21,7 @@ namespace Causal\Tscobj\Controller;
 
 use Causal\Tscobj\Exception\ObjectNotFoundException;
 use Causal\Tscobj\Plugin\AbstractPlugin;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectFactory;
 use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
@@ -46,7 +47,7 @@ class TypoScriptObjectController extends AbstractPlugin
         $typoScriptObjectPath = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'object');
 
         if (!$typoScriptObjectPath) {
-            return  '';
+            return '';
         }
 
         $templatePath = explode('.', $typoScriptObjectPath);
@@ -77,7 +78,9 @@ class TypoScriptObjectController extends AbstractPlugin
     protected function validateTemplatePath(array $templatePath): array
     {
         $contentType = '';
-        $typoScriptObject = $this->frontendController->tmpl->setup;
+        $typoScriptObject = $this->getServerRequest()
+            ->getAttribute('frontend.typoscript')
+            ->getSetupArray();
 
         $templatePaths = count($templatePath);
         for ($i = 0; $i < $templatePaths; $i++) {
@@ -94,5 +97,10 @@ class TypoScriptObjectController extends AbstractPlugin
         }
 
         return [$contentType, $typoScriptObject];
+    }
+
+    protected function getServerRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

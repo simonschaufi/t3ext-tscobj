@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
+use PhpCsFixer\Finder;
+use PhpCsFixer\Config;
+
 if (PHP_SAPI !== 'cli') {
     die('This script supports command line usage only. Please check your command.');
 }
 
-$finder = \PhpCsFixer\Finder::create()
+$finder = Finder::create()
     ->name('*.php')
     ->in(__DIR__)
     ->exclude(
@@ -38,7 +41,7 @@ LICENSE.txt file that was distributed with this source code.
 The TYPO3 project - inspiring people to share!
 EOF;
 
-return (new \PhpCsFixer\Config())
+return (new Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@DoctrineAnnotation' => true,
@@ -93,7 +96,7 @@ return (new \PhpCsFixer\Config())
             'header' => $headerComment,
             'comment_type' => 'comment',
             'location' => 'after_declare_strict',
-            'separate' => 'both'
-        ]
+            'separate' => 'both',
+        ],
     ])
     ->setFinder($finder);
