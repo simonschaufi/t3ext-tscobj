@@ -16,8 +16,4 @@ plugin.tx_tscobj_pi1 {
 # Setting gkh_rss_import plugin TypoScript
 tt_content.list.20.tscobj_pi1 =< plugin.tx_tscobj_pi1
 ', 'defaultContentRendering');
-
-    ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:tscobj/Configuration/TSconfig/Page/Mod/Wizards/NewContentElement.typoscript">'
-    );
 })();
