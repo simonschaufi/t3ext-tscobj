@@ -54,7 +54,7 @@ class TypoScriptObjectController extends AbstractPlugin
 
         try {
             [$contentType, $typoScriptObject] = $this->validateTemplatePath($templatePath);
-        } catch (ObjectNotFoundException $exception) {
+        } catch (ObjectNotFoundException) {
             return '<strong>' . $this->pi_getLL('errors.notfound') . '</strong> (' . $typoScriptObjectPath . ')';
         }
 
