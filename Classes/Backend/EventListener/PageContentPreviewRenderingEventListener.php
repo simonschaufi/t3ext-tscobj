@@ -77,7 +77,7 @@ final class PageContentPreviewRenderingEventListener
     private function pi_getFlexFormValueFromSheetArray(array $sheetArray, array $fieldNameArr, string $value): mixed
     {
         $tempArr = $sheetArray;
-        foreach ($fieldNameArr as $k => $v) {
+        foreach ($fieldNameArr as $v) {
             if (MathUtility::canBeInterpretedAsInteger($v)) {
                 if (is_array($tempArr)) {
                     $c = 0;
