@@ -33,8 +33,6 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
         ExtensionUtility::PLUGIN_TYPE_PLUGIN,
         'tscobj'
     );
-
-    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['tscobj_pi1'] = 'layout,select_key,pages,recursive';
     ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', 'tscobj_pi1', 'after:subheader');
 
     // Add flexform DataStructures
