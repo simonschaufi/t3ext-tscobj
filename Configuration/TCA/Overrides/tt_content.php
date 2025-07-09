@@ -39,7 +39,8 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
     // Add flexform DataStructures
     ExtensionManagementUtility::addPiFlexFormValue(
-        'tscobj_pi1',
-        'FILE:EXT:tscobj/Configuration/FlexForms/flexform_ds_pi1.xml'
+        '*',
+        'FILE:EXT:tscobj/Configuration/FlexForms/flexform_ds_pi1.xml',
+        'tscobj_pi1'
     );
 })();
