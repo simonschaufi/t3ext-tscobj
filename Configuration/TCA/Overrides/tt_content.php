@@ -35,7 +35,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     );
 
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['tscobj_pi1'] = 'layout,select_key,pages,recursive';
-    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['tscobj_pi1'] = 'pi_flexform';
+    ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', 'tscobj_pi1', 'after:subheader');
 
     // Add flexform DataStructures
     ExtensionManagementUtility::addPiFlexFormValue(
