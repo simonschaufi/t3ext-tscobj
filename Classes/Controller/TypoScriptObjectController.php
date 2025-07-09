@@ -92,7 +92,7 @@ class TypoScriptObjectController extends AbstractPlugin
 
             // Check object
             if (!$contentType && !$typoScriptObject) {
-                throw new ObjectNotFoundException('');
+                throw new ObjectNotFoundException('', 6986405219);
             }
         }
 
