@@ -5,7 +5,7 @@ defined('TYPO3') || die();
 use Causal\Tscobj\Controller\TypoScriptObjectController;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-(static function () {
+(static function (): void {
     // Add plugin frontend rendering
     ExtensionManagementUtility::addTypoScript('tscobj', 'setup', '
 plugin.tx_tscobj_pi1 = USER
