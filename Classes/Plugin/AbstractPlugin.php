@@ -130,7 +130,7 @@ class AbstractPlugin
             || isset($this->LOCAL_LANG_UNSET[$this->LLkey][$key])
         ) {
             $word = $this->LOCAL_LANG[$this->LLkey][$key][0]['target'];
-        } elseif ($this->altLLkey) {
+        } elseif ($this->altLLkey !== '') {
             $alternativeLanguageKeys = GeneralUtility::trimExplode(',', $this->altLLkey, true);
             foreach ($alternativeLanguageKeys as $languageKey) {
                 if (!empty($this->LOCAL_LANG[$languageKey][$key][0]['target'])
