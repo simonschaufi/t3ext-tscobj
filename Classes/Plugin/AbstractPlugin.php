@@ -191,7 +191,7 @@ class AbstractPlugin
                 $this->LOCAL_LANG_UNSET = [];
                 foreach ($this->conf['_LOCAL_LANG.'] as $languageKey => $languageArray) {
                     // Remove the dot after the language key
-                    $languageKey = substr($languageKey, 0, -1);
+                    $languageKey = substr((string)$languageKey, 0, -1);
                     // Don't process label if the language is not loaded
                     if (is_array($languageArray) && isset($this->LOCAL_LANG[$languageKey])) {
                         foreach ($languageArray as $labelKey => $labelValue) {
