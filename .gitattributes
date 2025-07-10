@@ -23,6 +23,7 @@
 *.t3s text eol=lf
 *.txt text eol=lf
 
+/Build export-ignore
 /Documentation export-ignore
 # This is the old backend module code
 /Modules export-ignore
