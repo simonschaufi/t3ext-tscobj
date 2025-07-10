@@ -30,14 +30,16 @@ final class PageContentPreviewRenderingEventListener
         if ($event->getTable() !== 'tt_content') {
             return;
         }
-        if ($event->getRecord()['CType'] === 'list' && $event->getRecord()['list_type'] === 'tscobj_pi1') {
-            $row = $event->getRecord();
-            $flexForm = GeneralUtility::xml2array($row['pi_flexform']);
-
-            $itemContent = 'TS: ' . $this->pi_getFlexFormValue($flexForm, 'object');
-
-            $event->setPreviewContent($itemContent);
+        if ($event->getRecord()['CType'] !== 'tscobj_pi1') {
+            return;
         }
+
+        $row = $event->getRecord();
+        $flexForm = GeneralUtility::xml2array($row['pi_flexform']);
+
+        $itemContent = 'TS: ' . $this->pi_getFlexFormValue($flexForm, 'object');
+
+        $event->setPreviewContent($itemContent);
     }
 
     /**
