@@ -30,7 +30,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
             'tscobj_pi1',
             'content-special-html',
         ],
-        ExtensionUtility::PLUGIN_TYPE_PLUGIN,
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
         'tscobj'
     );
     ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', 'tscobj_pi1', 'after:subheader');
