@@ -6,14 +6,26 @@ use Causal\Tscobj\Controller\TypoScriptObjectController;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 (static function (): void {
-    // Add plugin frontend rendering
-    ExtensionManagementUtility::addTypoScript('tscobj', 'setup', '
+    // Add default rendering for pi_layout plugin. Similar like:
+    /** @see \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin */
+    $pluginSignature = 'tscobj_pi1';
+    $pluginContent = trim('
 plugin.tx_tscobj_pi1 = USER
 plugin.tx_tscobj_pi1 {
 	userFunc = ' . TypoScriptObjectController::class . '->main
 }
 
-# Setting gkh_rss_import plugin TypoScript
-tt_content.list.20.tscobj_pi1 =< plugin.tx_tscobj_pi1
-', 'defaultContentRendering');
+tt_content.' . $pluginSignature . ' =< lib.contentElement
+tt_content.' . $pluginSignature . ' {
+    templateName = Generic
+    20 =< plugin.tx_tscobj_pi1
+}');
+
+    // Add plugin frontend rendering
+    ExtensionManagementUtility::addTypoScript(
+        'tscobj',
+        'setup',
+        $pluginContent,
+        'defaultContentRendering'
+    );
 })();

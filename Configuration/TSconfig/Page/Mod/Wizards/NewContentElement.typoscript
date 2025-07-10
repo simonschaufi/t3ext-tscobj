@@ -5,8 +5,7 @@ mod.wizards.newContentElement.wizardItems.plugins {
 			title = LLL:EXT:tscobj/Resources/Private/Language/locallang.xlf:pi1_title
 			description = LLL:EXT:tscobj/Resources/Private/Language/locallang.xlf:pi1_plus_wiz_description
 			tt_content_defValues {
-				CType = list
-				list_type = tscobj_pi1
+				CType = tscobj_pi1
 			}
 		}
 	}
