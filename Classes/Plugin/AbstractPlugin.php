@@ -75,8 +75,6 @@ class AbstractPlugin
      *
      * $conf[LOCAL_LANG][_key_] is reserved for Local Language overrides.
      * $conf[userFunc] reserved for setting up the USER / USER_INT object. See TSref
-     *
-     * @var array
      */
     public array $conf = [];
 
