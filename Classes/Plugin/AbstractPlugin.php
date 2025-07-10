@@ -89,7 +89,7 @@ class AbstractPlugin
     public function __construct()
     {
         $this->templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
-        $this->LLkey = $this->frontendController->getLanguage()->getTypo3Language();
+        $this->LLkey = $GLOBALS['TYPO3_REQUEST']->getAttribute('site')->getDefaultLanguage()->getTypo3Language();
 
         $locales = GeneralUtility::makeInstance(Locales::class);
         if ($locales->isValidLanguageKey($this->LLkey)) {
