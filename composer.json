@@ -33,7 +33,7 @@
 	},
 	"require-dev": {
 		"a9f/fractor-composer-json": "^0.5.6",
-		"a9f/typo3-fractor": "^0.5.5",
+		"a9f/typo3-fractor": "^0.5.6",
 		"ergebnis/composer-normalize": "^2.47.0",
 		"ssch/typo3-rector": "^3.3.0",
 		"symfony/console": "^7.1.4",
