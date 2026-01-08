@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Causal\Tscobj\Plugin;
 
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Localization\Locales;
 use TYPO3\CMS\Core\Localization\LocalizationFactory;
 use TYPO3\CMS\Core\Service\MarkerBasedTemplateService;
@@ -87,7 +88,8 @@ class AbstractPlugin
     public function __construct()
     {
         $this->templateService = GeneralUtility::makeInstance(MarkerBasedTemplateService::class);
-        $this->LLkey = $GLOBALS['TYPO3_REQUEST']->getAttribute('site')->getDefaultLanguage()->getTypo3Language();
+        $language = $this->getRequest()->getAttribute('language') ?? $this->getRequest()->getAttribute('site')->getDefaultLanguage();
+        $this->LLkey = $language->getTypo3Language();
 
         $locales = GeneralUtility::makeInstance(Locales::class);
         if ($locales->isValidLanguageKey($this->LLkey)) {
@@ -99,18 +101,16 @@ class AbstractPlugin
 
     /**
      * This setter is called when the plugin is called from UserContentObject (USER)
-     * via ContentObjectRenderer->callUserFunction().
+     * via ContentObjectRenderer->callUserFunction(). Do not remove!
      */
     public function setContentObjectRenderer(ContentObjectRenderer $cObj): void
     {
         $this->cObj = $cObj;
     }
 
-    /***************************
-     *
+    /*
      * Localization, locallang functions
-     *
-     **************************/
+     */
     /**
      * Returns the localized label of the LOCAL_LANG key, $key
      * Notice that for debugging purposes prefixes for the output values can be set with the internal vars
@@ -207,11 +207,9 @@ class AbstractPlugin
         $this->LOCAL_LANG_loaded = true;
     }
 
-    /*******************************
-     *
+    /*
      * FlexForms related functions
-     *
-     *******************************/
+     */
     /**
      * Converts $this->cObj->data['pi_flexform'] from XML string to flexForm array.
      *
@@ -287,5 +285,10 @@ class AbstractPlugin
             }
         }
         return $tempArr[$value] ?? '';
+    }
+
+    private function getRequest(): ServerRequest
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

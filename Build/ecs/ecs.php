@@ -31,7 +31,6 @@ return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->sets([
         SetList::PSR_12,
         SetList::CLEAN_CODE,
-        SetList::SYMPLIFY,
         SetList::ARRAY,
         SetList::COMMON,
         SetList::COMMENTS,

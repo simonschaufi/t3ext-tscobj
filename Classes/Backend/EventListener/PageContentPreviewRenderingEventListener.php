@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Causal\Tscobj\Backend\EventListener;
 
 use TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent;
+use TYPO3\CMS\Core\Domain\RawRecord;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
@@ -30,12 +31,17 @@ final class PageContentPreviewRenderingEventListener
         if ($event->getTable() !== 'tt_content') {
             return;
         }
-        if ($event->getRecord()['CType'] !== 'tscobj_pi1') {
+        if ($event->getRecordType() !== 'tscobj_pi1') {
             return;
         }
 
-        $row = $event->getRecord();
-        $flexForm = GeneralUtility::xml2array($row['pi_flexform']);
+        $rawRecord = $event->getRecord()
+            ->getRawRecord();
+        if (!$rawRecord instanceof RawRecord) {
+            return;
+        }
+        $properties = $rawRecord->toArray();
+        $flexForm = GeneralUtility::xml2array($properties['pi_flexform']);
 
         $itemContent = 'TS: ' . $this->pi_getFlexFormValue($flexForm, 'object');
 

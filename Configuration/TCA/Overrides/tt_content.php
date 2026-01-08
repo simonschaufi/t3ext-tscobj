@@ -19,26 +19,19 @@ declare(strict_types=1);
 
 defined('TYPO3') || die();
 
+use TYPO3\CMS\Core\Schema\Struct\SelectItem;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-(static function (): void {
-    // Add plugin to list_type dropdown
-    ExtensionManagementUtility::addPlugin(
-        [
-            'LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.list_type_pi1',
-            'tscobj_pi1',
-            'content-special-html',
-        ],
-        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
-        'tscobj'
-    );
-    ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', 'tscobj_pi1', 'after:subheader');
-
-    // Add flexform DataStructures
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:tscobj/Configuration/FlexForms/flexform_ds_pi1.xml',
-        'tscobj_pi1'
-    );
-})();
+// Add plugin to list_type dropdown
+ExtensionManagementUtility::addPlugin(
+    new SelectItem(
+        'select',
+        'LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.list_type_pi1.label',
+        'tscobj_pi1',
+        'content-special-html',
+        null,
+        'LLL:EXT:tscobj/Resources/Private/Language/locallang_db.xlf:tt_content.list_type_pi1.description'
+    ),
+    'FILE:EXT:tscobj/Configuration/FlexForms/flexform_ds_pi1.xml'
+);
+ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', 'tscobj_pi1', 'after:subheader');
