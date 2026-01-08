@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" datatype="plaintext" original="messages">
-		<header/>
-		<body>
-			<trans-unit id="tt_content.flexform_pi1.htmlspecialchars">
-				<source><![CDATA[Pass result through htmlspecialchars()]]></source>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" datatype="plaintext" original="messages">
+        <header/>
+        <body>
+            <trans-unit id="tt_content.flexform_pi1.htmlspecialchars">
+                <source><![CDATA[Pass result through htmlspecialchars()]]></source>
+            </trans-unit>
+            <trans-unit id="tt_content.flexform_pi1.object">
+                <source><![CDATA[TypoScript object path]]></source>
+            </trans-unit>
+            <trans-unit id="tt_content.list_type_pi1.label">
+                <source><![CDATA[TypoScript object]]></source>
+            </trans-unit>
+			<trans-unit id="tt_content.list_type_pi1.description">
+				<source><![CDATA[Adds a TypoScript object to the page.]]></source>
 			</trans-unit>
-			<trans-unit id="tt_content.flexform_pi1.object">
-				<source><![CDATA[TypoScript object path]]></source>
-			</trans-unit>
-			<trans-unit id="tt_content.list_type_pi1">
-				<source><![CDATA[TypoScript object]]></source>
-			</trans-unit>
-		</body>
-	</file>
+        </body>
+    </file>
 </xliff>

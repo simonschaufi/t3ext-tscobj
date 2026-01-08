@@ -1,28 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2019-12-06T23:00:16Z">
-		<header/>
-		<body>
-			<trans-unit id="errors.invalid" approved="yes">
-				<source><![CDATA[Invalid content type]]></source>
-				<target><![CDATA[Type de contenu invalide]]></target>
-			</trans-unit>
-			<trans-unit id="errors.notfound" approved="yes">
-				<source><![CDATA[TypoScript object not found]]></source>
-				<target><![CDATA[Objet TypoScript introuvable]]></target>
-			</trans-unit>
-			<trans-unit id="pi1_plus_wiz_description" approved="yes">
-				<source><![CDATA[Adds a TypoScript object to the page.]]></source>
-				<target><![CDATA[Ajoute un objet TypoScript à la page.]]></target>
-			</trans-unit>
-			<trans-unit id="pi1_title" approved="yes">
-				<source><![CDATA[TypoScript object]]></source>
-				<target><![CDATA[Objet TypoScript]]></target>
-			</trans-unit>
-			<trans-unit id="tt_content.list_type_pi1" approved="yes">
-				<source><![CDATA[TypoScript object]]></source>
-				<target><![CDATA[Objet TypoScript]]></target>
-			</trans-unit>
-		</body>
-	</file>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2019-12-06T23:00:16Z">
+        <header/>
+        <body>
+            <trans-unit id="errors.invalid" approved="yes">
+                <source><![CDATA[Invalid content type]]></source>
+                <target><![CDATA[Type de contenu invalide]]></target>
+            </trans-unit>
+            <trans-unit id="errors.notfound" approved="yes">
+                <source><![CDATA[TypoScript object not found]]></source>
+                <target><![CDATA[Objet TypoScript introuvable]]></target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

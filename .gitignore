@@ -1,5 +1,6 @@
 /.idea/
 /.Build/
+/config/
 /Documentation-GENERATED-temp/
 /var/
 /.env

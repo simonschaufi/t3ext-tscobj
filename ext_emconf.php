@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
-
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Content element from TypoScript',
-    'description' => 'A plugin which lets you use any TypoScript object as a normal content element.',
+    'description' => 'A TYPO3 extension which lets you use any TypoScript object as a normal content element.',
     'category' => 'plugin',
     'state' => 'stable',
     'author' => 'Simon Schaufelberger',
@@ -13,7 +11,7 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '5.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.10-13.4.99',
+            'typo3' => '14.0.0-14.3.99',
         ],
         'conflicts' => [],
         'suggests' => [],

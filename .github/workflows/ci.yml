@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2, 8.3, 8.4]
+        php: [8.2, 8.3, 8.4, 8.5]
 
     name: "PHP linter - ${{ matrix.php }}"
 
@@ -65,11 +65,11 @@ jobs:
           coverage: none
           tools: composer:v2
 
-      - name: "Show Composer version"
-        run: composer --version
+#      - name: "Show Composer version"
+#        run: composer --version
 
-      - name: "Show the Composer configuration"
-        run: composer config --global --list
+#      - name: "Show the Composer configuration"
+#        run: composer config --global --list
 
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v6
@@ -81,8 +81,8 @@ jobs:
       - name: "Install Composer dependencies"
         run: composer install --no-progress
 
-      - name: "List Installed Dependencies"
-        run: composer show -D
+#      - name: "List Installed Dependencies"
+#        run: composer show -D
 
       - name: "Run command"
         run: composer ci:${{ matrix.command }}

@@ -22,6 +22,7 @@ namespace Causal\Tscobj\Controller;
 use Causal\Tscobj\Exception\ObjectNotFoundException;
 use Causal\Tscobj\Plugin\AbstractPlugin;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Attribute\AsAllowedCallable;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectFactory;
 use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
@@ -38,6 +39,7 @@ class TypoScriptObjectController extends AbstractPlugin
      *
      * @throws ContentRenderingException
      */
+    #[AsAllowedCallable]
     public function main(string $content, array $conf): string
     {
         $this->conf = $conf;
