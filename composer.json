@@ -34,7 +34,7 @@
     "require-dev": {
         "a9f/fractor-composer-json": "^1.0",
         "a9f/typo3-fractor": "^1.0",
-        "ergebnis/composer-normalize": "^2.52.0",
+        "ergebnis/composer-normalize": "^2.53.0",
         "helmich/typo3-typoscript-lint": "^3.3.0",
         "helmich/typo3-typoscript-parser": "^2.8.1",
         "ssch/typo3-rector": "^3.3.0",
