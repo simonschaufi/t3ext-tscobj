@@ -32,7 +32,7 @@
         "typo3/cms-frontend": "^14.3"
     },
     "require-dev": {
-        "a9f/fractor-composer-json": "^1.0",
+        "a9f/fractor-composer-json": "^1.1",
         "a9f/typo3-fractor": "^1.1",
         "ergebnis/composer-normalize": "^2.54.0",
         "helmich/typo3-typoscript-lint": "^3.3.0",
